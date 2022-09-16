@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/28 06:47:50 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/16 17:41:11 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+void	*ft_memcpy(void *dest, const void *source, size_t num)
+{
+	size_t			i;
+	unsigned char	*dst;
+	unsigned char	*src;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	i = 0;
+	dst = (unsigned char *)dest;
+	src = (unsigned char *)source;
+	if (!dest)
+		return (NULL);
+	while (i < num)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	return (dst);
+}

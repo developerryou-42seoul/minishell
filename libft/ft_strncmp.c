@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/01/16 17:26:48 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/16 17:42:02 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
+{
+	size_t			i;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	s1 = (unsigned char *)str1;
+	s2 = (unsigned char *)str2;
+	i = 0;
+	while (n--)
+	{
+		if (s1[i] != s2[i] || !s1[i] || !s2[i])
+			return (s1[i] - s2[i]);
+		i++;
+	}
+	return (0);
+}

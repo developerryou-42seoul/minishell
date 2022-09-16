@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/28 18:07:43 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/14 23:36:50 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+char	*ft_strrchr(const char *str, int c)
+{
+	int	len;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	len = ft_strlen(str);
+	while (len >= 0)
+	{
+		if (str[len] == (char) c)
+			return ((char *)(str + len));
+		len--;
+	}
+	return (NULL);
+}

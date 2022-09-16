@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/09/16 14:41:00 by junekim           #+#    #+#             */
+/*   Updated: 2022/07/08 08:37:22 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
+}

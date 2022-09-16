@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/27 14:24:30 by junekim           #+#    #+#             */
+/*   Updated: 2022/06/21 18:50:54 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	if (!s)
+		return (NULL);
+	if ((unsigned int) ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	str = (char *) malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s + start, len + 1);
+	return (str);
+}

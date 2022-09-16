@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/16 10:27:34 by junekim          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*find_path(char **envp)
@@ -5,15 +17,6 @@ char	*find_path(char **envp)
 	while (strncmp("PATH", *envp, 4)) //ft_strncmp
 		envp++;
 	return (*envp + 5);
-}
-
-void	terminal_control(void)
-{
-	struct termios	term;
-
-	tcgetattr(STDIN_FILENO, &term);
-	term.c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
 
 void	signal_handler(int signum)
@@ -37,9 +40,10 @@ void	setting_signal(void)
 
 int main(int argc, char **argv, char **envp)
 {
-	char	*line;
+	char			*line;
+	struct termios	t;
 
-	terminal_control();
+	init_terminal(&t);
 	setting_signal();
 	while (1)
 	{
@@ -48,6 +52,7 @@ int main(int argc, char **argv, char **envp)
 		{
 			if (*line != '\0')
 				add_history(line);
+			printf("%c", *line);
 //			line_execute(line, @@, );
 		}
 		else
@@ -57,5 +62,14 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	(void)envp;
+	return (0);
+}
+
+int		main(void)
+{
+	struct termios		t;
+
+	if (!init_term(&t) || !init_query() || !read_char())
+		return (1);
 	return (0);
 }

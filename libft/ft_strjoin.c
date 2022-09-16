@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/30 11:30:58 by junekim           #+#    #+#             */
+/*   Updated: 2021/12/31 14:05:00 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ptr;
+	size_t	len_s1;
+	size_t	len_s2;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	ptr = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+	if (!ptr)
+		return (NULL);
+	ft_strlcpy(ptr, s1, len_s1 + len_s2 + 1);
+	ft_strlcat(ptr, s2, len_s1 + len_s2 + 1);
+	return (ptr);
+}

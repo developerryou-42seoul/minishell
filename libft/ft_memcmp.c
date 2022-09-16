@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/28 18:30:22 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/19 00:01:29 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
+{
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	tmp1 = (unsigned char *)ptr1;
+	tmp2 = (unsigned char *)ptr2;
+	while (num--)
+	{
+		if (*tmp1 != *tmp2)
+			return (*tmp1 - *tmp2);
+		else
+		{
+			tmp1++;
+			tmp2++;
+			continue ;
+		}
+	}
+	return (0);
+}

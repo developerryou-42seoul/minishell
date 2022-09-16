@@ -4,25 +4,33 @@ NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra
 
-LDFLAGS = -L ~/.brew/opt/readline/lib
-CPPFLAGS = -I ~/.brew/opt/readline/include
+LDFLAGS = -L /opt/homebrew/Cellar/readline/8.1.2/lib
+CPPFLAGS = -I /opt/homebrew/Cellar/readline/8.1.2/include
 
-SRCS = main.c
+SRCS = main.c init.c
 
 OBJS = $(SRCS:.c=.o)
 
+LIBFT = libft/libft.a
+
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -lreadline $(LDFLAGS) $(OBJS) -o $(NAME)
+	make -C ./libft
+	$(CC) $(CFLAGS) -lreadline $(LDFLAGS) $(OBJS)  $(LIBFT) -o $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 all: $(NAME)
 
+$(LIBFT) :
+	make -C ./libft
+
 clean:
+	make clean -C ./libft
 	$(RM) $(OBJS)
 
 fclean: clean
+	make fclean -C ./libft
 	$(RM) $(NAME)
 
 re:

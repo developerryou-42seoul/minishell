@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:28 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/12/28 07:07:41 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/18 23:59:03 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "libft.h"
 
-# include "./libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <signal.h>
-# include <stdlib.h>
-# include <term.h>
-# include <sys/termios.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+void	*ft_memmove(void *dest, const void *src, size_t num)
+{
+	int	i;
 
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
-
-int	init_terminal(struct termios *t);
-int	ft_putchar(int ch);
-
-#endif
+	i = 0;
+	if (!dest || !src)
+		return (NULL);
+	if (dest > src)
+		while (num--)
+			((unsigned char *)dest)[num] = ((unsigned char *)src)[num];
+	else if (dest < src)
+	{
+		while (num--)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
+	}
+	return (dest);
+}
