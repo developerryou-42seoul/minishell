@@ -4,8 +4,13 @@ NAME = minishell
 
 CFLAGS = -Wall -Werror -Wextra
 
-LDFLAGS = -L ~/.brew/opt/readline/lib
-CPPFLAGS = -I ~/.brew/opt/readline/include
+READLINE = ~/.brew/opt/readline
+#READLINE = 
+#READLINE =
+#READLINE = 
+
+LDFLAGS = -L $(READLINE)/lib
+CPPFLAGS = -I $(READLINE)/include
 
 SRCS = main.c
 
