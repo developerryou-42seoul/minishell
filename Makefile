@@ -7,7 +7,7 @@ CFLAGS = -Wall -Werror -Wextra
 LDFLAGS = -L /opt/homebrew/Cellar/readline/8.1.2/lib
 CPPFLAGS = -I /opt/homebrew/Cellar/readline/8.1.2/include
 
-SRCS = main.c init.c
+SRCS = main.c init.c cursor.c cursor_move.c minishell_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -15,7 +15,7 @@ LIBFT = libft/libft.a
 
 $(NAME): $(OBJS)
 	make -C ./libft
-	$(CC) $(CFLAGS) -lreadline $(LDFLAGS) $(OBJS)  $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) -lreadline -lncurses $(LDFLAGS) $(OBJS)  $(LIBFT) -o $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@

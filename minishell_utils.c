@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:37:44 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/16 14:11:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	ft_putchar(int ch)
 {
-	write(STDOUT_FILENO, &ch, sizeof(ch));
+	if (write(STDOUT_FILENO, &ch, sizeof(ch)) < 0)
+		return (1);
 	return (0);
 }

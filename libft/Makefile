@@ -6,7 +6,7 @@
 #    By: junekim <june1171@naver.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 13:00:54 by junekim           #+#    #+#              #
-#    Updated: 2022/08/08 17:23:45 by junekim          ###   ########seoul.kr   #
+#    Updated: 2022/09/16 14:20:07 by junekim          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,13 +42,13 @@ NAME = libft.a
 all : $(NAME)
 
 $(NAME) : $(OBJECTS)
-	arch -x86_64 $(AR) $@ $^
+	$(AR) $@ $^
 
 bonus :
 	make WITH_BONUS=1 all
 
 %.o : %.c
-	arch -x86_64 $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
 	$(RM) $(OBJS) $(BOBJS)

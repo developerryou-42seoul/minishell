@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:27:34 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/16 14:37:06 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ void	setting_signal(void)
 	//signal(SIG@@), SIG_IGN);
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	char			*line;
 	struct termios	t;
 
 	init_terminal(&t);
 	setting_signal();
+	parse_char();
 	while (1)
 	{
 		line = readline("mini-0.0$ ");
@@ -52,8 +53,6 @@ int main(int argc, char **argv, char **envp)
 		{
 			if (*line != '\0')
 				add_history(line);
-			printf("%c", *line);
-//			line_execute(line, @@, );
 		}
 		else
 			exit(1);
@@ -62,14 +61,5 @@ int main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	(void)envp;
-	return (0);
-}
-
-int		main(void)
-{
-	struct termios		t;
-
-	if (!init_term(&t) || !init_query() || !read_char())
-		return (1);
 	return (0);
 }

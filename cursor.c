@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:31:17 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 10:38:15 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/16 14:46:00 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	get_cursor_pos(int *col, int *row)
+static int	cursor_position(int *col, int *row)
 {
 	int					i;
 	int					ret;
@@ -35,112 +35,49 @@ int	get_cursor_pos(int *col, int *row)
 	return (0);
 }
 
-int	cur_left(int *col, int *row)
+static int	cursor_putchar(int ch, int *col, int *row)
 {
-	if (*col)
-	{
-		(*col)--;
-		if (tputs(tgoto(g_cm, *col, *row), 1, ft_putchar))
-			return (1);
-	}
-	return (0);
-}
+	int	ret;
 
-int	cur_right(int *col, int *row)
-{
-	(*col)++;
-	if (tputs(tgoto(g_cm, *col, *row), 1, ft_putchar))
-		return (1);
-	return (0);
-}
-
-int	cur_up(int *col, int *row)
-{
-	if (*row)
-	{
-		(*row)--;
-		if (tputs(tgoto(g_cm, *col, *row), 1, ft_putchar))
-			return (1);
-	}
-	return (0);
-}
-
-int	cur_down(int *col, int *row)
-{
-	(*row)++;
-	if (tputs(tgoto(g_cm, *col, *row), 1, ft_putchar))
-		return (1);
-	return (0);
-}
-
-int	cur_backspace(int *col, int *row)
-{
-	if (*col)
-	{
-		(*col)--;
-		if (tputs(tgoto(g_cm, *col, *row), 1, ft_putchar))
-			return (1);
-	}
-	if (tputs(g_dc, 1, ft_putchar))
-		return (1);
-	return (0);
-}
-
-bool	key_handle(int ch, int *col, int *row)
-{
+	ret = 0;
 	if (ch == KEY_LEFT)
-	{
-		if (!cur_left(col, row))
-			return (false);
-	}
+		ret = left(col, row);
 	else if (ch == KEY_RIGHT)
-	{
-		if (!cur_right(col, row))
-			return (false);
-	}
+		ret = right(col, row);
 	else if (ch == KEY_UP)
-	{
-		if (!cur_up(col, row))
-			return (false);
-	}
+		ret = up(col, row);
 	else if (ch == KEY_DOWN)
-	{
-		if (!cur_down(col, row))
-			return (false);
-	}
+		ret = down(col, row);
 	else if (ch == KEY_BACKSPACE)
-	{
-		if (!cur_backspace(col, row))
-			return (false);
-	}
+		ret = backspace(col, row);
 	else
 	{
-		++(*col);
-		if (!putchar(ch))
-			return (false);
+		(*col)++;
+		ret = ft_putchar(ch);
 	}
-	return (true);
+	return (ret);
 }
 
-bool	read_char(void)
+int	parse_char(void)
 {
-	int					ch;
-	int					ret;
-	int					col;
-	int					row;
+	int	ret;
+	int	ch;
+	int	col;
+	int	row;
 
 	ret = read(STDIN_FILENO, &ch, sizeof(ch));
 	if (ret < 0)
 		return (1);
 	while (ret)
 	{
-		if (get_position(&col, &row))
+		if (cursor_position(&col, &row))
 			return (1);
+		if (cursor_putchar(ch, &col, &row))
+			return (1);
+		ch = 0;
 		ret = read(STDIN_FILENO, &ch, sizeof(ch));
 		if (ret < 0)
 			return (1);
-		if (key_handle(ch, &col, &row))
-			return (false);
-		ch = 0;
 	}
+	return (0);
 }

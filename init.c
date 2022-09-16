@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 09:47:05 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/16 14:20:49 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ int	init_terminal(struct termios *t)
 		return (1);
 	return (0);
 }
-
