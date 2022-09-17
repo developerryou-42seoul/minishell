@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 14:37:06 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/17 18:06:48 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,19 @@ int	main(int argc, char **argv, char **envp)
 {
 	char			*line;
 	struct termios	t;
+	t_block_info	info;
 
 	init_terminal(&t);
 	setting_signal();
-	parse_char();
+	info.head = NULL;
+	info.tail = NULL;
 	while (1)
 	{
 		line = readline("mini-0.0$ ");
 		if (line)
 		{
-			if (*line != '\0')
-				add_history(line);
+			add_history(line);
+			parser(line, &info);
 		}
 		else
 			exit(1);

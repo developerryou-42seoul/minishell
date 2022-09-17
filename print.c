@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 11:19:18 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/14 22:31:17 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/09/17 19:36:43 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/17 19:39:49 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	*ft_calloc(size_t n, size_t size)
+void	print_block(t_block *block)
 {
-	void	*ptr;
+	t_list	*cur;
 
-	ptr = malloc(n * size);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, n * size);
-	return (ptr);
+	cur = block->argv;
+	while (cur)
+	{
+		printf("%s ", cur->string);
+		cur = cur->next;
+	}
+	printf("\n");
 }

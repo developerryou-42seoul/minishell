@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   minishell_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/27 11:35:01 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/27 14:19:20 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/17 18:52:46 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "minishell.h"
+
+int	ft_putchar(int ch)
 {
-	if ('0' <= c && c <= '9')
-		return (4);
-	else
-		return (0);
+	if (write(STDOUT_FILENO, &ch, sizeof(ch)) < 0)
+		return (1);
+	return (0);
 }
