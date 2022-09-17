@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/16 14:29:45 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/17 14:06:13 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@
 # include <sys/termios.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-
-const char	*g_cm;
-const char	*g_ce;
-const char	*g_dc;
 
 int	up(int *col, int *row);
 int	down(int *col, int *row);
