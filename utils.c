@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 13:31:30 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/20 17:10:44 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ int	ft_putchar(int ch)
 	return (0);
 }
 
-void	error(void)
+void	error(char *str)
 {
+	printf("%s ", str);
 	printf("error\n");
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 13:49:07 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/20 17:09:33 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_block
 	int				argc;
 	t_list			*argv;
 	int				quote[2];
+	int				dollar;
 	t_list			*redir;
 	struct s_block	*prev;
 	struct s_block	*next;
@@ -56,7 +57,7 @@ void	init_list(t_list *list);
 void	init_block(t_block *block);
 
 int		ft_putchar(int ch);
-void	error(void);
+void	error(char *str);
 
 int		parser(char *line, t_block_info *info);
 
@@ -68,6 +69,7 @@ int		ft_strlen(char *str);
 void	create_empty(char **str);
 int		is_space(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
+char	*mini_join_str(char *s1, char *s2);
 char	*ft_dup(char *str);
 
 void	print_info(t_block_info *info);

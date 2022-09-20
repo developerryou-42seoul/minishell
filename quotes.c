@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:56:57 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 12:45:40 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/20 17:30:56 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	quote(t_block *block, char ch)
 	type = is_quote(ch);
 	if (!type)
 		return (0);
-	if (!block->quote[0] && !block->quote[1])
+	if (!(block->quote[0]) && !(block->quote[1]))
 	{
 		block->quote[type - 1] = 1;
 		return (1);

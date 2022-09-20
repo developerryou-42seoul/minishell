@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/17 19:29:10 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/20 14:24:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	init_block(t_block *block)
 	block->redir = NULL;
 	block->quote[0] = 0;
 	block->quote[1] = 0;
+	block->dollar = 0;
 }
