@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/17 19:52:42 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/20 13:49:07 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,26 @@ void	init_list(t_list *list);
 void	init_block(t_block *block);
 
 int		ft_putchar(int ch);
+void	error(void);
+
 int		parser(char *line, t_block_info *info);
 
 void	add_block(t_block_info *info, t_block *block);
 void	add_argv(t_block *block, char *str);
 void	add_redir(t_block *block, int type, char *str);
 
-int		ft_strlen(char *str, char *end);
-char	*ft_dup(char *str, char *end);
+int		ft_strlen(char *str);
+void	create_empty(char **str);
+int		is_space(t_block *block, char ch);
+char	*mini_join(char *str, char ch);
+char	*ft_dup(char *str);
 
+void	print_info(t_block_info *info);
 void	print_block(t_block *block);
+
+int		is_in_quote(t_block *block);
+int		quote(t_block *block, char ch);
+
+int		is_redir(t_block *block, char *line);
 
 #endif
