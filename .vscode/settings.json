@@ -1,0 +1,17 @@
+{
+	"files.associations": {
+		"minishell.h": "c",
+		"__hash_table": "c",
+		"__tuple": "c",
+		"algorithm": "c",
+		"functional": "c",
+		"memory_resource": "c",
+		"unordered_map": "c",
+		"memory": "c",
+		"tuple": "c",
+		"type_traits": "c",
+		"utility": "c",
+		"signal.h": "c",
+		"cstring": "c"
+	}
+}

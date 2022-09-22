@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/22 18:07:15 by junekim          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 char	*find_path(char **envp)
@@ -5,15 +17,6 @@ char	*find_path(char **envp)
 	while (strncmp("PATH", *envp, 4)) //ft_strncmp
 		envp++;
 	return (*envp + 5);
-}
-
-void	terminal_control(void)
-{
-	struct termios	term;
-
-	tcgetattr(STDIN_FILENO, &term);
-	term.c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 }
 
 void	signal_handler(int signum)
@@ -35,20 +38,25 @@ void	setting_signal(void)
 	//signal(SIG@@), SIG_IGN);
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	char	*line;
+	char			*line;
+	struct termios	t;
+	t_block_info	info;
 
-	terminal_control();
+	init_terminal(&t);
 	setting_signal();
 	while (1)
 	{
+		//must free act
+		info.head = NULL;
+		info.tail = NULL;
 		line = readline("mini-0.0$ ");
 		if (line)
 		{
-			if (*line != '\0')
+			if (*line)
 				add_history(line);
-//			line_execute(line, @@, );
+			parser(line, &info);
 		}
 		else
 			exit(1);
