@@ -6,18 +6,12 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 17:09:33 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/22 18:46:22 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# define KEY_LEFT		4479771
-# define KEY_RIGHT		4414235
-# define KEY_UP			4283163
-# define KEY_DOWN		4348699
-# define KEY_BACKSPACE	127
 
 # include <stdio.h>
 # include <unistd.h>
@@ -51,6 +45,17 @@ typedef struct s_block_info
 	t_block	*head;
 	t_block	*tail;
 }	t_block_info;
+
+typedef struct s_data
+{
+	int past_return;
+	t_list envp;
+	t_block_info blocks;
+	/* data */
+}	t_data;
+
+t_data data;
+
 
 int		init_terminal(struct termios *t);
 void	init_list(t_list *list);

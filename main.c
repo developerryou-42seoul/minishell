@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 14:02:18 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/22 18:07:15 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	main(int argc, char **argv, char **envp)
 		line = readline("mini-0.0$ ");
 		if (line)
 		{
-			add_history(line);
+			if (*line)
+				add_history(line);
 			parser(line, &info);
 		}
 		else
