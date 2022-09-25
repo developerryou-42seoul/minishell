@@ -12,13 +12,6 @@
 
 #include "minishell.h"
 
-char	*find_path(char **envp)
-{
-	while (strncmp("PATH", *envp, 4)) //ft_strncmp
-		envp++;
-	return (*envp + 5);
-}
-
 void	signal_handler(int signum)
 {
 	if (signum == SIGINT)
