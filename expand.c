@@ -16,16 +16,17 @@ int	ft_strncmp(char *s1, char *s2, int len)
 
 char	*find_env(char *env, char **envp)
 {
-	char *a;
-	create_empty(&a);
-	a = mini_join_str(a, ++env);
-	a = mini_join(a, '=');
+	char *temp_env;
+	create_empty(&temp_env);
+	temp_env = mini_join_str(temp_env, ++env);
+	temp_env = mini_join(temp_env, '=');
 
 	while (*envp)
 	{
-		if ((ft_strncmp(a, *envp, ft_strlen(a))))
-			return (*envp + ft_strlen(a));
+		if ((ft_strncmp(temp_env, *envp, ft_strlen(temp_env))))
+			return (*envp + ft_strlen(temp_env));
 		envp++;
 	}
+	free(temp_env);
 	return ("no envp");
 }
