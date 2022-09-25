@@ -12,8 +12,6 @@
 
 #include "minishell.h"
 
-t_data	g_data;
-
 char	*find_path(char **envp)
 {
 	while (strncmp("PATH", *envp, 4)) //ft_strncmp
