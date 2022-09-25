@@ -87,4 +87,9 @@ int		is_redir(t_block *block, char *line);
 
 char	*find_env(char *env, char **envp);
 int		ft_strncmp(char *s1, char *s2, int len);
+
+void	free_list(t_list *list);
+void	free_block(t_block *block);
+void	free_info(t_block_info *info);
+
 #endif
