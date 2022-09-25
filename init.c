@@ -6,11 +6,18 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 14:24:52 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/25 14:13:05 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	init_g_data(char **envp)
+{
+	data.envp = envp;
+	//
+	//
+}
 
 int	init_terminal(struct termios *t)
 {

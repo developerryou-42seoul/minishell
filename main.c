@@ -6,11 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/22 18:07:15 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/25 14:14:15 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+t_data	g_data;
 
 char	*find_path(char **envp)
 {
@@ -43,7 +45,8 @@ int	main(int argc, char **argv, char **envp)
 	char			*line;
 	struct termios	t;
 	t_block_info	info;
-
+	
+	init_g_data(envp);
 	init_terminal(&t);
 	setting_signal();
 	while (1)
@@ -64,6 +67,5 @@ int	main(int argc, char **argv, char **envp)
 	}
 	(void)argc;
 	(void)argv;
-	(void)envp;
 	return (0);
 }

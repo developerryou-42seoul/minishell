@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/22 18:46:22 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/25 14:18:28 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ typedef struct s_block_info
 typedef struct s_data
 {
 	int past_return;
-	t_list envp;
+	char** envp;
 	t_block_info blocks;
 	/* data */
 }	t_data;
 
 t_data data;
 
-
+void	init_g_data(char **envp);
 int		init_terminal(struct termios *t);
 void	init_list(t_list *list);
 void	init_block(t_block *block);
@@ -85,4 +85,6 @@ int		quote(t_block *block, char ch);
 
 int		is_redir(t_block *block, char *line);
 
+char	*find_env(char *env, char **envp);
+int		ft_strncmp(char *s1, char *s2, int len);
 #endif
