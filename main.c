@@ -55,6 +55,7 @@ int	main(int argc, char **argv, char **envp)
 		else
 			exit(1);
 		free(line);
+		//free(&info);
 	}
 	(void)argc;
 	(void)argv;

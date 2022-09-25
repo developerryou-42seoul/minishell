@@ -76,6 +76,7 @@ int		is_space(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 char	*ft_dup(char *str);
+int		ft_strncmp(char *s1, char *s2, int len);
 
 void	print_info(t_block_info *info);
 void	print_block(t_block *block);
@@ -86,7 +87,7 @@ int		quote(t_block *block, char ch);
 int		is_redir(t_block *block, char *line);
 
 char	*find_env(char *env, char **envp);
-int		ft_strncmp(char *s1, char *s2, int len);
+
 
 void	free_list(t_list *list);
 void	free_block(t_block *block);

@@ -84,6 +84,20 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
+int	ft_strncmp(char *s1, char *s2, int len)
+{
+	int	i;
+	
+	i = 0;
+	while (i < len && (s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	create_empty(char **str)
 {
 	*str = (char *)malloc(sizeof(char));
