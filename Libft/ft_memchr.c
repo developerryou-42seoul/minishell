@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/11 14:53:57 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/11 17:33:40 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	unsigned char	*str;
+	unsigned char	ch_c;
+	size_t			idx;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
+	str = (unsigned char *)s;
+	ch_c = (unsigned char)c;
 	idx = 0;
-	while (idx < len)
+	while (idx < n)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		if (str[idx] == ch_c)
+			return ((void *)(str + idx));
+		idx++;
 	}
-	ret[idx] = 0;
-	return (ret);
+	return (0);
 }

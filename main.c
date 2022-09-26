@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/20 14:02:18 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/26 18:47:14 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_path(char **envp)
 {
-	while (strncmp("PATH", *envp, 4)) //ft_strncmp
+	while (ft_strncmp("PATH", *envp, 4)) //ft_strncmp
 		envp++;
 	return (*envp + 5);
 }
@@ -56,6 +56,7 @@ int	main(int argc, char **argv, char **envp)
 		{
 			add_history(line);
 			parser(line, &info);
+			excute(&info);
 		}
 		else
 			exit(1);
@@ -63,6 +64,6 @@ int	main(int argc, char **argv, char **envp)
 	}
 	(void)argc;
 	(void)argv;
-	(void)envp;
+	my_envp = envp;
 	return (0);
 }

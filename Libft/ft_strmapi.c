@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/11 21:22:21 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/11 21:31:45 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	size_t	len;
+	size_t	idx;
+	char	*mkstr;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
+	if (s == 0 || f == 0)
+		return (0);
+	len = ft_strlen(s);
+	mkstr = (char *)malloc(sizeof(char) * (len + 1));
+	if (mkstr == 0)
+		return (0);
 	idx = 0;
 	while (idx < len)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		mkstr[idx] = f(idx, s[idx]);
+		idx++;
 	}
-	ret[idx] = 0;
-	return (ret);
+	mkstr[idx] = '\0';
+	return (mkstr);
 }

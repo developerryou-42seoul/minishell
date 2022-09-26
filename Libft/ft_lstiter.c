@@ -1,41 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/19 10:06:10 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/19 10:36:15 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
-
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
+	while (lst)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		(*f)(lst->content);
+		lst = lst->next;
 	}
-	ret[idx] = 0;
-	return (ret);
 }

@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/11 16:45:26 by sryou             #+#    #+#             */
+/*   Updated: 2022/07/23 11:49:47 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+int	ft_atoi(const char *str)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	int	res;
+	int	sign;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
+	while ((9 <= *str && *str <= 13) || *str == ' ')
+		str++;
+	sign = 1;
+	if (*str == '+' || *str == '-')
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	ret[idx] = 0;
-	return (ret);
+	res = 0;
+	while (ft_isdigit(*str))
+	{
+		res = res * 10 + (*str - '0');
+		str++;
+	}
+	return (res * sign);
 }

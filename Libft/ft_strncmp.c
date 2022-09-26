@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/02/06 09:53:52 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/19 10:55:24 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	size_t	idx;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
+	if (n == 0)
+		return (0);
 	idx = 0;
-	while (idx < len)
+	while (s1[idx] != '\0' && s2[idx] != '\0' && n > 1 + idx)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		if (s1[idx] != s2[idx])
+			return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
+		idx++;
 	}
-	ret[idx] = 0;
-	return (ret);
+	return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
 }

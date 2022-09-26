@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/19 10:08:07 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/19 10:36:09 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	t_list	*newlst;
+	t_list	*temp;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
+	newlst = 0;
+	while (lst)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		temp = ft_lstnew((*f)(lst->content));
+		if (temp == 0)
+		{
+			ft_lstclear(&newlst, del);
+			return (0);
+		}
+		ft_lstadd_back(&newlst, temp);
+		lst = lst->next;
 	}
-	ret[idx] = 0;
-	return (ret);
+	return (newlst);
 }

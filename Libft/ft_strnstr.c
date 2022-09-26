@@ -1,41 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/11 16:23:23 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/11 17:06:07 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	size_t	idx;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (*haystack && len > 0)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		idx = 0;
+		while (haystack[idx] == needle[idx] && idx < len)
+		{
+			idx++;
+			if (needle[idx] == '\0')
+				return ((char *)haystack);
+		}
+		haystack++;
+		len--;
 	}
-	ret[idx] = 0;
-	return (ret);
+	return (0);
 }

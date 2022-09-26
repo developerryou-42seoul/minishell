@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/02/06 17:58:11 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/11 17:23:44 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+char	*ft_strdup(const char *s1)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
-
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
+	char	*mkstr;
 	int		len;
-	int		idx;
 
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
-	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
-	}
-	ret[idx] = 0;
-	return (ret);
+	len = ft_strlen(s1);
+	mkstr = (char *)malloc(sizeof(char) * (len + 1));
+	if (mkstr == 0)
+		return (0);
+	ft_strlcpy(mkstr, s1, len + 1);
+	return (mkstr);
 }

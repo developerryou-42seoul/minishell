@@ -1,36 +1,48 @@
-CC = cc
-
 NAME = minishell
-
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+AR = ar rcs
+RM = rm -rf
 
-#LDFLAGS = -L ~/.brew/opt/readline/lib
-#CPPFLAGS = -I ~/.brew/opt/readline/include
+LIBFT = ./Libft
+LIBFT_LIB = ft
+READLINE = ~/.brew/opt/readline/include
+READLINE_LIB = ~/.brew/opt/readline/lib
 
-LDFLAGS = -L/opt/homebrew/Cellar/readline/8.1.2/lib
-CPPFLAGS = -I/opt/homebrew/Cellar/readline/8.1.2/include
-
-SRCS = main.c init.c quotes.c string.c linkedlist.c utils.c parser.c redir.c print.c
+SRCS = main.c \
+		init.c \
+		quotes.c \
+		string.c \
+		linkedlist.c \
+		utils.c \
+		parser.c \
+		redir.c \
+		print.c \
+		get_next_line/get_next_line.c \
+		get_next_line/get_next_line_utils.c \
+		excute.c \
+		path.c \
+		stdinout.c
 
 OBJS = $(SRCS:.c=.o)
 
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -lreadline -lncurses $(LDFLAGS) $(OBJS)  $(LIBFT) -o $(NAME)
+$(NAME) : $(OBJS)
+	make bonus -C $(LIBFT)/
+	$(CC) $(CFLAGS) -L $(READLINE_LIB) -lreadline -lncurses  -L $(LIBFT) -l$(LIBFT_LIB) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(READLINE) -c $< -o $@
 
-all: $(NAME)
+all : $(NAME)
 
-
-clean:
+clean :
+	make fclean -C $(LIBFT)/
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean : clean
 	$(RM) $(NAME)
 
-re:
+re : 
 	make fclean
 	make all
 

@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/02/05 10:05:06 by sryou             #+#    #+#             */
+/*   Updated: 2022/05/14 13:56:28 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
+	size_t	idx;
+	size_t	len;
 
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
+	len = ft_strlen(src);
+	if (dstsize == 0)
+		return (len);
 	idx = 0;
-	while (idx < len)
+	while (*src != '\0' && idx + 1 < dstsize)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		*dst = *src;
+		dst++;
+		src++;
+		idx++;
 	}
-	ret[idx] = 0;
-	return (ret);
+	*dst = '\0';
+	return (len);
 }

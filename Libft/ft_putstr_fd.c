@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:07 by sryou            ###   ########.fr       */
+/*   Created: 2022/03/19 09:17:59 by sryou             #+#    #+#             */
+/*   Updated: 2022/03/19 10:35:59 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	error(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
-
-char	**list_to_charptrptr(t_list *list)
-{
-	char	**ret;
-	int		len;
-	int		idx;
-
-	len = ft_lstsize(list);
-	ret = malloc(sizeof(char **) * (len + 1));
-	if (ret == 0)
-		error(strerror(errno));
-	idx = 0;
-	while (idx < len)
+	if (s == 0)
+		return ;
+	while (*s)
 	{
-		ret[idx] = (char *)list->content;
-		list = list->next;
-		idx ++;
+		ft_putchar_fd(*s, fd);
+		s++;
 	}
-	ret[idx] = 0;
-	return (ret);
 }
