@@ -14,5 +14,5 @@ char	*find_env(char *env, char **envp)
 		envp++;
 	}
 	free(temp_env);
-	return ("no envp");
+	return ("");
 }
