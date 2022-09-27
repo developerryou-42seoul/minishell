@@ -16,6 +16,7 @@ SRCS = main.c \
 		parse/parser.c \
 		parse/redir.c \
 		parse/expand.c \
+		parse/read_block.c \
 		excute/excute.c \
 		excute/path.c \
 		excute/stdinout.c \
