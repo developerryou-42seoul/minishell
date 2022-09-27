@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/22 18:07:15 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/27 16:45:42 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_path(char **envp)
 {
-	while (strncmp("PATH", *envp, 4)) //ft_strncmp
+	while (ft_strncmp("PATH", *envp, 4)) //ft_strncmp
 		envp++;
 	return (*envp + 5);
 }
@@ -43,7 +43,8 @@ int	main(int argc, char **argv, char **envp)
 	char			*line;
 	struct termios	t;
 	t_block_info	info;
-
+	
+	init_g_data(envp);
 	init_terminal(&t);
 	setting_signal();
 	while (1)
@@ -57,13 +58,14 @@ int	main(int argc, char **argv, char **envp)
 			if (*line)
 				add_history(line);
 			parser(line, &info);
+			excute(&info);
 		}
 		else
 			exit(1);
 		free(line);
+		//free(&info);
 	}
 	(void)argc;
 	(void)argv;
-	(void)envp;
 	return (0);
 }
