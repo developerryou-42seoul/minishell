@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:16:37 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:45:42 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,5 @@ int	main(int argc, char **argv, char **envp)
 	}
 	(void)argc;
 	(void)argv;
-	my_envp = envp;
 	return (0);
 }

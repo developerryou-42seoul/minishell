@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:38:56 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:46:02 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
-
-char **my_envp;
 
 typedef struct s_redir
 {
@@ -61,10 +59,8 @@ typedef struct s_block_info
 
 typedef struct s_data
 {
-	int past_return;
-	char** envp;
-	t_block_info blocks;
-	/* data */
+	int		past_return;
+	char	**envp;
 }	t_data;
 
 t_data data;
