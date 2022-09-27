@@ -6,13 +6,13 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/27 17:58:38 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 18:09:25 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	open_redirection(t_redir *redir, t_block *block)
+void	open_redirection_stdin(t_redir *redir, t_block *block)
 {
 	int	fd;
 
@@ -27,7 +27,7 @@ void	open_redirection(t_redir *redir, t_block *block)
 		add_stdin(block, STDIN);
 }
 
-void	open_redirection(t_redir *redir, t_block *block)
+void	open_redirection_stdout(t_redir *redir, t_block *block)
 {
 	int	fd;
 
@@ -51,7 +51,6 @@ void	make_redirection(t_block *block)
 {
 	t_list	*list_redir;
 	t_redir	*redir;
-	int		fd;
 
 	list_redir = block->redir;
 	while (list_redir)

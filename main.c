@@ -6,18 +6,11 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 17:31:28 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 18:10:14 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*find_path(char **envp)
-{
-	while (ft_strncmp("PATH", *envp, 4)) //ft_strncmp
-		envp++;
-	return (*envp + 5);
-}
 
 void	signal_handler(int signum)
 {
@@ -43,7 +36,7 @@ int	main(int argc, char **argv, char **envp)
 	char			*line;
 	struct termios	t;
 	t_block_info	info;
-	
+
 	init_g_data(envp);
 	init_terminal(&t);
 	setting_signal();
