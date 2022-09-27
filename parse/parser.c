@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 18:07:54 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 18:28:24 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*parser_sub(char *line, t_block_info *info)
 		create_empty(&str_argv);
 		while (!is_end(block, *line) && !is_space(block, *line))
 		{
-			read_block_redir(&line, info, &str_argv, &str_redir);
+			read_block(&line, info, &str_argv, &str_redir);
 			if (is_in_quote(block))
 				error("parser_sub2");
 		}

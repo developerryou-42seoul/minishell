@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 18:08:53 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:19 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 	char	*env;
 
 	create_empty(&env);
+	block->dollar = 0;
 	while (!is_end(block, **line) && !is_space(block, **line) && \
 		!is_redir(block, *line))
 	{
@@ -64,7 +65,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 	return (0);
 }
 
-int	read_block_redir(char **line, t_block_info *info, \
+int	read_block(char **line, t_block_info *info, \
 char **str_argv, char **str_redir)
 {
 	int		type;
