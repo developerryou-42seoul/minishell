@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:18:39 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:38:56 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include <sys/termios.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-# include "get_next_line/get_next_line.h"
-# include "Libft/libft.h"
+# include "get_next_line.h"
+# include "libft.h"
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2

@@ -1,6 +1,7 @@
 NAME = minishell
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
+INCLUDE = ./include
 AR = ar rcs
 RM = rm -rf
 
@@ -10,21 +11,21 @@ READLINE = ~/.brew/opt/readline/include
 READLINE_LIB = ~/.brew/opt/readline/lib
 
 SRCS = main.c \
-		init.c \
-		quotes.c \
-		string.c \
-		linkedlist.c \
-		utils.c \
-		parser.c \
-		redir.c \
-		expand.c \
-		free.c \
 		print.c \
+		parse/quotes.c \
+		parse/parser.c \
+		parse/redir.c \
+		parse/expand.c \
+		excute/excute.c \
+		excute/path.c \
+		excute/stdinout.c \
+		utils/init.c \
+		utils/string.c \
+		utils/linkedlist.c \
+		utils/utils.c \
+		utils/free.c \
 		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c \
-		excute.c \
-		path.c \
-		stdinout.c
+		get_next_line/get_next_line_utils.c 
 
 OBJS = $(SRCS:.c=.o)
 
@@ -33,7 +34,7 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -L $(READLINE_LIB) -lreadline -lncurses  -L $(LIBFT) -l$(LIBFT_LIB) $(OBJS) -o $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -I $(READLINE) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(READLINE) -I $(INCLUDE) -c $< -o $@
 
 all : $(NAME)
 
