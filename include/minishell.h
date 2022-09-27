@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:46:02 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 18:00:38 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_data
 	char	**envp;
 }	t_data;
 
-t_data data;
+t_data	data;
 
 void	init_g_data(char **envp);
 int		init_terminal(struct termios *t);
@@ -82,8 +82,12 @@ void	add_redir(t_block *block, int type, char *str);
 
 void	create_empty(char **str);
 int		is_space(t_block *block, char ch);
+int		is_end(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
+
+int		read_block_redir(char **line, t_block_info *info, \
+char **str_argv, char **str_redir);
 
 void	print_info(t_block_info *info);
 void	print_block(t_block *block);
@@ -100,8 +104,8 @@ char	*find_exec(char *exec);
 void	pipe_init(t_block_info *info);
 void	pipe_restore(t_block_info *info);
 
-void    stdin_manage(int fd_stdin, t_list *list_stdin);
-void    stdout_manage(int fd_stdout, t_list *list_stdout);
+void	stdin_manage(int fd_stdin, t_list *list_stdin);
+void	stdout_manage(int fd_stdout, t_list *list_stdout);
 
 char	*find_env(char *env, char **envp);
 

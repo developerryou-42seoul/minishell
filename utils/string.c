@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:18:06 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 17:59:12 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ char	*mini_join_str(char *s1, char *s2)
 	ret[i] = '\0';
 	free(s1);
 	return (ret);
+}
+
+int	is_end(t_block *block, char ch)
+{
+	if (is_in_quote(block))
+		return (0);
+	else if (!ch)
+		return (1);
+	else if (ch == '|')
+		return (1);
+	return (0);
 }
 
 int	is_space(t_block *block, char ch)
