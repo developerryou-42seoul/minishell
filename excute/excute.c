@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/26 18:51:13 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:50:34 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	runprocess(t_block *block)
 		}
 		// execve
 		printf("execve called\n");
-		execve(find_exec(block->argv->content), list_to_charptrptr(block->argv), my_envp);
+		execve(find_exec(block->argv->content), list_to_charptrptr(block->argv), data.envp);
 	}
 	else // parent process
 	{
