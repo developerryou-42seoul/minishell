@@ -6,18 +6,12 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:47:03 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:18:39 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
-# define KEY_LEFT		4479771
-# define KEY_RIGHT		4414235
-# define KEY_UP			4283163
-# define KEY_DOWN		4348699
-# define KEY_BACKSPACE	127
 
 # include <stdio.h>
 # include <unistd.h>
@@ -65,6 +59,17 @@ typedef struct s_block_info
 	t_block	*tail;
 }	t_block_info;
 
+typedef struct s_data
+{
+	int past_return;
+	char** envp;
+	t_block_info blocks;
+	/* data */
+}	t_data;
+
+t_data data;
+
+void	init_g_data(char **envp);
 int		init_terminal(struct termios *t);
 void	init_block(t_block *block);
 
@@ -101,5 +106,11 @@ void	pipe_restore(t_block_info *info);
 
 void    stdin_manage(int fd_stdin, t_list *list_stdin);
 void    stdout_manage(int fd_stdout, t_list *list_stdout);
+
+char	*find_env(char *env, char **envp);
+
+void	free_list(t_list *list);
+void	free_block(t_block *block);
+void	free_info(t_block_info *info);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:47:14 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:16:37 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	main(int argc, char **argv, char **envp)
 	char			*line;
 	struct termios	t;
 	t_block_info	info;
-
+	
+	init_g_data(envp);
 	init_terminal(&t);
 	setting_signal();
 	while (1)
@@ -54,13 +55,15 @@ int	main(int argc, char **argv, char **envp)
 		line = readline("mini-0.0$ ");
 		if (line)
 		{
-			add_history(line);
+			if (*line)
+				add_history(line);
 			parser(line, &info);
 			excute(&info);
 		}
 		else
 			exit(1);
 		free(line);
+		//free(&info);
 	}
 	(void)argc;
 	(void)argv;

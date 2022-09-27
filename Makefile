@@ -17,6 +17,8 @@ SRCS = main.c \
 		utils.c \
 		parser.c \
 		redir.c \
+		expand.c \
+		free.c \
 		print.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \

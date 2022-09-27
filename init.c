@@ -6,11 +6,18 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 17:26:18 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 16:15:41 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	init_g_data(char **envp)
+{
+	data.envp = envp;
+	//
+	//
+}
 
 int	init_terminal(struct termios *t)
 {
