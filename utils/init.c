@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:46:17 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 17:42:59 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	init_g_data(char **envp)
 {
-	data.envp = envp;
+	data = malloc(sizeof(t_data));
+	data->envp = envp;
+	data->past_return = 0;
 }
 
 int	init_terminal(struct termios *t)

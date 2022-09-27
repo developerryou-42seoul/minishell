@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:46:39 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 17:36:10 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 		if (is_dollar(block, **line))
 		{
 			if (*env)
-				*str = mini_join_str(*str, find_env(env, data.envp));
+				*str = mini_join_str(*str, find_env(env, data->envp));
 			block->dollar = is_dollar(block, **line);
 			create_empty(&env);
 			env = mini_join(env, '$');
@@ -64,7 +64,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 		(*line)++;
 	}
 	if (*env)
-		*str = mini_join_str(*str, find_env(env, data.envp));
+		*str = mini_join_str(*str, find_env(env, data->envp));
 	return (0);
 }
 

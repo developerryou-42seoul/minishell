@@ -6,57 +6,44 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/27 16:50:34 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 17:58:38 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	runprocess(t_block *block)
+void	open_redirection(t_redir *redir, t_block *block)
 {
-	pid_t	pid;
-	int		pipe_input[2];
-	int		pipe_output[2];
+	int	fd;
 
-	if (pipe(pipe_input) < 0 || pipe(pipe_output) < 0)
-		error(strerror(errno));
-	pid = fork();
-	if (pid == -1) // fail to make child process
-		error(strerror(errno));
-	else if (pid == 0) // child process
+	if (redir->type == 1)
 	{
-		// stdin redirection
-		if (block->list_stdin != NULL)
-		{
-			close(pipe_input[1]);
-			dup2(pipe_input[0], STDIN);
-		}
-		// stdout redirection
-		if (block->list_stdout != NULL)
-		{
-			close(pipe_output[0]);
-			dup2(pipe_output[1], STDOUT);
-		}
-		// execve
-		printf("execve called\n");
-		execve(find_exec(block->argv->content), list_to_charptrptr(block->argv), data.envp);
+		fd = open(redir->string, O_RDONLY);
+		if (fd == -1)
+			error(strerror(errno));
+		add_stdin(block, fd);
 	}
-	else // parent process
+	else if (redir->type == 3)
+		add_stdin(block, STDIN);
+}
+
+void	open_redirection(t_redir *redir, t_block *block)
+{
+	int	fd;
+
+	if (redir->type == 2)
 	{
-		// stdin manage (pipe, redirection, heredoc...)
-		if (block->list_stdin != NULL)
-		{
-			close(pipe_input[0]);
-			stdin_manage(pipe_input[1], block->list_stdin);
-		}
-		// wait until child process ends
-		wait(0);
-		// stdout redirection (pipe, write...)
-		if (block->list_stdout != NULL)
-		{
-			close(pipe_output[1]);
-			stdout_manage(pipe_output[0], block->list_stdout);
-		}
+		fd = open(redir->string, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		if (fd == -1)
+			error(strerror(errno));
+		add_stdout(block, fd);
+	}
+	else if (redir->type == 4)
+	{
+		fd = open(redir->string, O_WRONLY | O_CREAT | O_APPEND, 0777);
+		if (fd == -1)
+			error(strerror(errno));
+		add_stdout(block, fd);
 	}
 }
 
@@ -70,29 +57,10 @@ void	make_redirection(t_block *block)
 	while (list_redir)
 	{
 		redir = list_redir->content;
-		if (redir->type == 1)
-		{
-			fd = open(redir->string, O_RDONLY);
-			if (fd == -1)
-				error(strerror(errno));
-			add_stdin(block, fd);
-		}
-		else if (redir->type == 2)
-		{
-			fd = open(redir->string, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-			if (fd == -1)
-				error(strerror(errno));
-			add_stdout(block, fd);
-		}
-		else if (redir->type == 3)
-			add_stdin(block, STDIN);
-		else if (redir->type == 4)
-		{
-			fd = open(redir->string, O_WRONLY | O_CREAT | O_APPEND, 0777);
-			if (fd == -1)
-				error(strerror(errno));
-			add_stdout(block, fd);
-		}
+		if (redir->type == 1 || redir->type == 3)
+			open_redirection_stdin(redir, block);
+		else if (redir->type == 2 || redir->type == 4)
+			open_redirection_stdout(redir, block);
 		else
 			error("redir error");
 		list_redir = list_redir->next;

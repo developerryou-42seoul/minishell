@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 16:46:02 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/27 17:59:02 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_data
 	char	**envp;
 }	t_data;
 
-t_data data;
+t_data	*data;
 
 void	init_g_data(char **envp);
 int		init_terminal(struct termios *t);
@@ -94,6 +94,7 @@ int		quote(t_block *block, char ch);
 int		is_redir(t_block *block, char *line);
 
 void	excute(t_block_info *info);
+void	runprocess(t_block *block);
 
 char	*find_exec(char *exec);
 

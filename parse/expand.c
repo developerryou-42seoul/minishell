@@ -9,7 +9,7 @@ char	*find_env(char *env, char **envp)
 
 	while (*envp)
 	{
-		if ((ft_strncmp(temp_env, *envp, ft_strlen(temp_env))))
+		if (!(ft_strncmp(temp_env, *envp, ft_strlen(temp_env))))
 			return (*envp + ft_strlen(temp_env));
 		envp++;
 	}
