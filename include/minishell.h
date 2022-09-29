@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 20:04:14 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 20:18:03 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	pipe_restore(t_block_info *info);
 void	stdin_manage(int fd_stdin, t_list *list_stdin);
 void	stdout_manage(int fd_stdout, t_list *list_stdout);
 
-char	*find_env(char *env, char **envp);
+char	*find_env(char *env, char **envp, int flag);
 
 void	free_list(t_list *list);
 void	free_block(t_block *block);
@@ -120,5 +120,6 @@ void	free_info(t_block_info *info);
 
 int		builtin_pwd(t_block *block);
 int		builtin_cd(t_block *block);
+int		builtin_env(t_block *block);
 
 #endif

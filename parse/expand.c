@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonglee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/09/29 14:52:15 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/09/29 20:17:46 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_env(char *env, char **envp)
+char	*find_env(char *env, char **envp, int flag)
 {
 	char	*temp_env;
 	int		len;
@@ -33,5 +33,8 @@ char	*find_env(char *env, char **envp)
 		envp++;
 	}
 	free(temp_env);
-	return ("");
+	if (flag)
+		return ("");
+	else
+		return (NULL);
 }

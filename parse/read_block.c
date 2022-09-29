@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:59:46 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 20:18:24 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_dollar(t_block *block, char **line, char **str, char **env)
 	if (is_dollar(block, **line))
 	{
 		if (**env)
-			*str = mini_join_str(*str, find_env(*env, data->envp));
+			*str = mini_join_str(*str, find_env(*env, data->envp, 1));
 		block->dollar = is_dollar(block, **line);
 		if (block->dollar)
 			free(*env);
@@ -63,7 +63,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 		(*line)++;
 	}
 	if (*env)
-		*str = mini_join_str(*str, find_env(env, data->envp));
+		*str = mini_join_str(*str, find_env(env, data->envp, 1));
 	free(env);
 	return (0);
 }
