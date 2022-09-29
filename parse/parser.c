@@ -40,7 +40,6 @@ char	*parser_sub(char *line, t_block_info *info)
 
 int	parser(char *line, t_block_info *info)
 {
-
 	while (*line)
 	{
 		line = parser_sub(line, info);
