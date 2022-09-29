@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 17:59:12 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 16:44:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ char	*mini_join_str(char *s1, char *s2)
 
 int	is_end(t_block *block, char ch)
 {
+	if (!ch)
+		return (1);
 	if (is_in_quote(block))
 		return (0);
-	else if (!ch)
-		return (1);
 	else if (ch == '|')
 		return (1);
 	return (0);
