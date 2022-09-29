@@ -23,11 +23,22 @@ void	signal_handler(int signum)
 	}
 }
 
+void	process_sigint(int signum)
+{
+	if (signum == SIGINT)
+		printf("\n");
+}
+
 void	setting_signal(void)
 {
 	signal(SIGINT, signal_handler);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGTERM, SIG_IGN);
+}
+
+void	process_signal(void)
+{
+	signal(SIGINT, process_sigint);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -38,9 +49,9 @@ int	main(int argc, char **argv, char **envp)
 
 	init_g_data(envp);
 	init_terminal(&t);
-	setting_signal();
 	while (1)
 	{
+		setting_signal();
 		info.head = NULL;
 		info.tail = NULL;
 		line = readline("mini-0.0$ ");
@@ -49,6 +60,7 @@ int	main(int argc, char **argv, char **envp)
 			if (*line)
 				add_history(line);
 			parser(line, &info);
+			process_signal();
 			excute(&info);
 		}
 		else
