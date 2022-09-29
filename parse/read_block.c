@@ -62,6 +62,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 	}
 	if (*env)
 		*str = mini_join_str(*str, find_env(env, data->envp));
+	free(env);
 	return (0);
 }
 
