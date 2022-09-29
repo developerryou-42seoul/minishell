@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:30:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/29 18:20:21 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 18:42:27 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char	**split_path(void)
 
 char	*find_path(char *path, char *exec)
 {
+	int		fd;
 	char	*temp1;
 	char	*temp2;
 
@@ -40,8 +41,12 @@ char	*find_path(char *path, char *exec)
 	free(temp1);
 	if (temp2 == 0)
 		error("execution path join");
-	if (access(temp2, X_OK) == 0)
+	fd = open(temp2, O_RDONLY);
+	if (fd >= 0)
+	{
+		close(fd);
 		return (temp2);
+	}
 	free(temp2);
 	return (0);
 }
