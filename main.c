@@ -54,7 +54,10 @@ int	main(int argc, char **argv, char **envp)
 			excute(&info);
 		}
 		else
+		{
+			printf("exit\n");
 			exit(1);
+		}
 		free(line);
 		free_info(&info);
 	}
