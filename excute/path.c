@@ -52,6 +52,8 @@ char	*find_exec(char *exec)
 	char	**path;
 	char	*ret;
 
+	if (!ft_strlen(exec))
+		error("invalid envp");
 	if (ft_strncmp(exec, "/", 1) != 0 && \
 	ft_strncmp(exec, "./", 2) != 0 && \
 	ft_strncmp(exec, "../", 3) != 0)

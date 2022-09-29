@@ -28,6 +28,8 @@ static int	check_dollar(t_block *block, char **line, char **str, char **env)
 		if (**env)
 			*str = mini_join_str(*str, find_env(*env, data->envp));
 		block->dollar = is_dollar(block, **line);
+		if (block->dollar)
+			free(*env);
 		create_empty(&(*env));
 		*env = mini_join(*env, '$');
 		(*line)++;
