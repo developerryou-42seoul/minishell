@@ -15,11 +15,6 @@ int    builtin_pwd(t_block *block)
     (void)block;
     return (0);
 }
-int    builtin_export(t_block *block)
-{
-    (void)block;
-    return (0);
-}
 int    builtin_unset(t_block *block)
 {
     (void)block;

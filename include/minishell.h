@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:31:53 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 20:35:45 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,16 @@ int		is_redir(t_block *block, char *line);
 
 void	excute(t_block_info *info);
 void	runprocess(t_block *block);
+
 int		manage_builtins(t_block *block);
 int		check_builtins(t_block *block);
+int		builtin_echo(t_block *block);
+int		builtin_cd(t_block *block);
+int		builtin_pwd(t_block *block);
+int		builtin_unset(t_block *block);
+int		builtin_export(t_block *block);
+int		builtin_env(t_block *block);
+int		builtin_exit(t_block *block);
 
 char	*find_exec(char *exec);
 
