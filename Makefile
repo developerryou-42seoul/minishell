@@ -26,6 +26,7 @@ SRCS = main.c \
 		utils/linkedlist.c \
 		utils/utils.c \
 		utils/free.c \
+		builtins/builtins.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c 
 

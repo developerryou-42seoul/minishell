@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 18:28:45 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 18:31:53 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int		is_redir(t_block *block, char *line);
 
 void	excute(t_block_info *info);
 void	runprocess(t_block *block);
+int		manage_builtins(t_block *block);
+int		check_builtins(t_block *block);
 
 char	*find_exec(char *exec);
 
