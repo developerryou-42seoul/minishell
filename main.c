@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/27 18:10:14 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 21:25:17 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char **argv, char **envp)
 				add_history(line);
 			parser(line, &info);
 			excute(&info);
+			chdir(find_env("$PWD", data->envp, 1));
 		}
 		else
 		{

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:48:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 20:02:27 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/29 20:13:27 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ int	builtin_export(t_block *block)
 }
 
 int	builtin_unset(t_block *block)
-{
-	(void)block;
-	return (0);
-}
-
-int	builtin_env(t_block *block)
 {
 	(void)block;
 	return (0);
