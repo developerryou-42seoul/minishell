@@ -43,9 +43,11 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 		close(pipe_input[0]);
 		stdin_manage(pipe_input[1], block->list_stdin);
 	}
-	if (wait(&status) == -1 || status == 256)
+	if (wait(&status) == -1)
 		data->past_return = 1;
-	else if (status == 0)
+	if (status != 0)
+		data->past_return = status / 256;
+	else
 		data->past_return = 0;
 	if (block->list_stdout != NULL)
 	{
