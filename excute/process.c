@@ -36,12 +36,17 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 
 void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
+	int	status;
+
 	if (block->list_stdin != NULL)
 	{
 		close(pipe_input[0]);
 		stdin_manage(pipe_input[1], block->list_stdin);
 	}
-	wait(0);
+	if (wait(&status) == -1 || status == 256)
+		data->past_return = 1;
+	else if (status == 0)
+		data->past_return = 0;
 	if (block->list_stdout != NULL)
 	{
 		close(pipe_output[1]);
