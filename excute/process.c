@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:58:13 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/27 18:10:41 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 18:28:29 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,14 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 		close(pipe_output[0]);
 		dup2(pipe_output[1], STDOUT);
 	}
-	execve(find_exec(block->argv->content), \
-		list_to_charptrptr(block->argv), data->envp);
+	if (check_builtins(block))
+		exit(manage_builtins(block));
+	else
+	{
+		execve(find_exec(block->argv->content), \
+			list_to_charptrptr(block->argv), data->envp);
+		error(strerror(errno));
+	}
 }
 
 void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
