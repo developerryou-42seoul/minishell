@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:31:53 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 20:04:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		is_end(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 
+int		is_same_str(char *s1, char *s2);
+
 int		read_block(char **line, t_block_info *info, \
 char **str_argv, char **str_redir);
 
@@ -115,5 +117,8 @@ char	*find_env(char *env, char **envp);
 void	free_list(t_list *list);
 void	free_block(t_block *block);
 void	free_info(t_block_info *info);
+
+int		builtin_pwd(t_block *block);
+int		builtin_cd(t_block *block);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:55:15 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 18:31:01 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 18:41:59 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	add_stdout(t_block *block, int fd)
 void	add_argv(t_block *block, char *str)
 {
 	ft_lstadd_back(&(block->argv), ft_lstnew(str));
+	block->argc += 1;
 }
 
 void	add_redir(t_block *block, int type, char *str)

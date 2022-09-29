@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   string2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 17:42:35 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 17:46:49 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/09/29 19:55:56 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/29 20:03:01 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/minishell.h"
+#include "minishell.h"
 
-int	pwd(void)
+int	is_same_str(char *s1, char *s2)
 {
-	char	*dir;
-
-	dir = getcwd(NULL, 0);
-	if (!dir)
-		error(strerror(errno));
-	printf("%s\n", dir);
-	free(dir);
-	return (1);
+	if (ft_strlen(s1) == ft_strlen(s2) && \
+	ft_strncmp(s1, s2, ft_strlen(s1)) == 0)
+		return (1);
+	return (0);
 }
