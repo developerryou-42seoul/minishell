@@ -28,7 +28,6 @@ void	setting_signal(void)
 	signal(SIGINT, signal_handler);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGTERM, SIG_IGN);
-	//signal(SIG@@), SIG_IGN);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -42,7 +41,6 @@ int	main(int argc, char **argv, char **envp)
 	setting_signal();
 	while (1)
 	{
-		//must free act
 		info.head = NULL;
 		info.tail = NULL;
 		line = readline("mini-0.0$ ");
@@ -54,9 +52,12 @@ int	main(int argc, char **argv, char **envp)
 			excute(&info);
 		}
 		else
+		{
+			printf("exit\n");
 			exit(1);
+		}
 		free(line);
-		//free(&info);
+		free_info(&info);
 	}
 	(void)argc;
 	(void)argv;

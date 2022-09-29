@@ -59,7 +59,7 @@ void	add_argv(t_block *block, char *str)
 void	add_redir(t_block *block, int type, char *str)
 {
 	t_redir	*redir;
-	
+
 	redir = malloc(sizeof(t_redir));
 	redir->type = type;
 	redir->string = str;

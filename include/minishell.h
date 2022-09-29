@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:30:14 by sryou            ###   ########.fr       */
+/*   Updated: 2022/09/29 18:31:53 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		is_end(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 
-int		read_block_redir(char **line, t_block_info *info, \
+int		read_block(char **line, t_block_info *info, \
 char **str_argv, char **str_redir);
 
 void	print_info(t_block_info *info);
