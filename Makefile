@@ -23,11 +23,15 @@ SRCS = main.c \
 		excute/stdinout.c \
 		utils/init.c \
 		utils/string.c \
+		utils/string2.c \
 		utils/linkedlist.c \
 		utils/utils.c \
 		utils/free.c \
 		builtins/builtins.c \
 		builtins/builtin_export.c \
+		builtins/builtin_pwd.c \
+		builtins/builtin_cd.c \
+		builtins/builtin_env.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c 
 

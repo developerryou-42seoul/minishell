@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.c                                           :+:      :+:    :+:   */
+/*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/09/29 20:17:46 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/09/29 20:08:45 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/29 20:13:13 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_env(char *env, char **envp, int flag)
+int	builtin_env(t_block *block)
 {
-	char	*temp_env;
-	int		len;
+	int	i;
 
-	create_empty(&temp_env);
-	temp_env = mini_join_str(temp_env, ++env);
-	temp_env = mini_join(temp_env, '=');
-	len = ft_strlen(temp_env);
-	while (*envp)
+	i = 0;
+	if (block->argc != 1)
+		return (1);
+	while (data->envp[i])
 	{
-		if (!(ft_strncmp(temp_env, *envp, len)))
-		{
-			free(temp_env);
-			return (*envp + len);
-		}
-		envp++;
+		printf("%s\n", data->envp[i]);
+		i++;
 	}
-	free(temp_env);
-	if (flag)
-		return ("");
-	else
-		return (NULL);
+	return (0);
 }

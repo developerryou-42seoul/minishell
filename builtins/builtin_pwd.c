@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand.c                                           :+:      :+:    :+:   */
+/*   builtin_pwd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/09/29 20:17:46 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/09/29 17:42:35 by junekim           #+#    #+#             */
+/*   Updated: 2022/09/29 21:15:37 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*find_env(char *env, char **envp, int flag)
+int	builtin_pwd(t_block *block)
 {
-	char	*temp_env;
-	int		len;
+	char	*dir;
 
-	create_empty(&temp_env);
-	temp_env = mini_join_str(temp_env, ++env);
-	temp_env = mini_join(temp_env, '=');
-	len = ft_strlen(temp_env);
-	while (*envp)
-	{
-		if (!(ft_strncmp(temp_env, *envp, len)))
-		{
-			free(temp_env);
-			return (*envp + len);
-		}
-		envp++;
-	}
-	free(temp_env);
-	if (flag)
-		return ("");
-	else
-		return (NULL);
+	if (block->argc != 1)
+		return (1);
+	dir = getcwd(NULL, 0);
+	if (!dir)
+		return (errno);
+	printf("%s\n", dir);
+	free(dir);
+	return (0);
 }
