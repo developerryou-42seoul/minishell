@@ -123,5 +123,6 @@ void	free_info(t_block_info *info);
 int		builtin_pwd(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_env(t_block *block);
+int		ft_unset(t_block *block);
 
 #endif
