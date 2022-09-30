@@ -60,11 +60,13 @@ typedef struct s_block_info
 typedef struct s_data
 {
 	int		past_return;
+	// t_list	*envp;
 	char	**envp;
 }	t_data;
 
 t_data	*data;
 
+t_list	*init_list_envp(char **envp_arr);
 void	init_g_data(char **envp);
 int		init_terminal(struct termios *t);
 void	init_block(t_block *block);

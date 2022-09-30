@@ -12,9 +12,22 @@
 
 #include "minishell.h"
 
+t_list	*init_list_envp(char **envp_arr)
+{
+	t_list	*envp;
+	int		i;
+
+	i = 0;
+	envp = NULL;
+	while(envp_arr[i])
+		ft_lstadd_back(&envp, ft_lstnew(envp_arr[i++]));
+	return (envp);
+}
+
 void	init_g_data(char **envp)
 {
 	data = malloc(sizeof(t_data));
+	// data->envp = init_list_envp(envp);
 	data->envp = envp;
 	data->past_return = 0;
 }
