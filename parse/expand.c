@@ -18,7 +18,7 @@ char	*find_env(char *env, char **envp, int flag)
 	int		len;
 
 	if (!ft_strncmp(env, "$?", 2))
-		return (ft_itoa(data->past_return));
+		return (ft_itoa(g_data->past_return));
 	create_empty(&temp_env);
 	temp_env = mini_join_str(temp_env, ++env);
 	temp_env = mini_join(temp_env, '=');

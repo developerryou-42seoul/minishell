@@ -17,9 +17,9 @@ static	int	init_env(char **dir, char **pwd, char **oldpwd, char **home)
 	*dir = getcwd(NULL, 0);
 	if (!dir)
 		return (errno);
-	*pwd = find_env("$PWD", data->envp, 0);
-	*oldpwd = find_env("$OLDPWD", data->envp, 0);
-	*home = find_env("$HOME", data->envp, 0);
+	*pwd = find_env("$PWD",g_data->envp, 0);
+	*oldpwd = find_env("$OLDPWD", g_data->envp, 0);
+	*home = find_env("$HOME", g_data->envp, 0);
 	if (!(*pwd) || !(*oldpwd) || !(*home))
 		return (1);
 	return (0);

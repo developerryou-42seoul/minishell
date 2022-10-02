@@ -62,7 +62,7 @@ int	main(int argc, char **argv, char **envp)
 			parser(line, &info);
 			process_signal();
 			excute(&info);
-			chdir(find_env("$PWD", data->envp, 1));
+			chdir(find_env("$PWD", g_data->envp, 1));
 		}
 		else
 		{

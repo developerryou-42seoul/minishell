@@ -64,8 +64,7 @@ typedef struct s_data
 	char	**envp;
 }	t_data;
 
-t_data	*data;
-// t_data	*g_data;
+t_data	*g_data;
 
 t_list	*init_list_envp(char **envp_arr);
 void	init_g_data(char **envp);

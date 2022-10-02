@@ -26,7 +26,7 @@ static int	check_dollar(t_block *block, char **line, char **str, char **env)
 	if (is_dollar(block, **line))
 	{
 		if (**env)
-			*str = mini_join_str(*str, find_env(*env, data->envp, 1));
+			*str = mini_join_str(*str, find_env(*env, g_data->envp, 1));
 		block->dollar = is_dollar(block, **line);
 		if (block->dollar)
 			free(*env);
@@ -63,7 +63,7 @@ static int	read_one_char(t_block *block, char **line, char **str)
 		(*line)++;
 	}
 	if (*env)
-		*str = mini_join_str(*str, find_env(env, data->envp, 1));
+		*str = mini_join_str(*str, find_env(env, g_data->envp, 1));
 	free(env);
 	return (0);
 }

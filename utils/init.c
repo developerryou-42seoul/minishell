@@ -26,10 +26,10 @@ t_list	*init_list_envp(char **envp_arr)
 
 void	init_g_data(char **envp)
 {
-	data = malloc(sizeof(t_data));
-	// data->envp = init_list_envp(envp);
-	data->envp = envp;
-	data->past_return = 0;
+	g_data = malloc(sizeof(t_data));
+	// g_data->envp = init_list_envp(envp);
+	g_data->envp = envp;
+	g_data->past_return = 0;
 }
 
 int	init_terminal(struct termios *t)

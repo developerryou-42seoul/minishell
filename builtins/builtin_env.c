@@ -19,9 +19,9 @@ int	builtin_env(t_block *block)
 	i = 0;
 	if (block->argc != 1)
 		return (1);
-	while (data->envp[i])
+	while (g_data->envp[i])
 	{
-		printf("%s\n", data->envp[i]);
+		printf("%s\n", g_data->envp[i]);
 		i++;
 	}
 	return (0);
