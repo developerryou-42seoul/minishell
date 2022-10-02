@@ -81,9 +81,10 @@ int	builtin_export(t_block *block)
 	if (new_envp == 0)
 		return (errno);
 	copy_envp(new_envp, len_envp);
-	copy_argv(new_envp + len_envp, block->argv, len_argv);
+	copy_argv(new_envp + len_envp, block->argv->next, len_argv);
 	new_envp[len_argv + len_envp] = 0;
 	//free(data->envp);
 	data->envp = new_envp;
+	builtin_env(block);
 	return (0);
 }
