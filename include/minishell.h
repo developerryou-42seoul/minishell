@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 21:32:37 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 01:45:28 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct s_redir
 	char	*string;
 }	t_redir;
 
+typedef struct s_dic
+{
+	char	*key;
+	char	*value;
+}	t_dic;
+
 typedef struct s_block
 {
 	int				argc;
@@ -60,18 +66,17 @@ typedef struct s_block_info
 typedef struct s_data
 {
 	int		past_return;
-	// t_list	*envp;
-	char	**envp;
+	t_list	*envp;
 }	t_data;
 
 t_data	*g_data;
 
-t_list	*init_list_envp(char **envp_arr);
 void	init_g_data(char **envp);
 void	init_block(t_block *block);
 
 void	error(char *str);
 char	**list_to_charptrptr(t_list *list);
+char	**diclist_to_charptrptr(t_list *list);
 
 int		parser(char *line, t_block_info *info);
 
@@ -80,6 +85,12 @@ void	add_stdin(t_block *block, int fd);
 void	add_stdout(t_block *block, int fd);
 void	add_argv(t_block *block, char *str);
 void	add_redir(t_block *block, int type, char *str);
+void	add_envp(char *key, char *value);
+
+t_dic	*make_dic(char *key, char *value);
+char	*dic_to_charptr(t_dic *dic);
+char	*split_key(char *env);
+char	*split_value(char *env);
 
 void	create_empty(char **str);
 int		is_space(t_block *block, char ch);
@@ -112,6 +123,7 @@ int		builtin_pwd(t_block *block);
 int		builtin_unset(t_block *block);
 int		builtin_export(t_block *block);
 int		builtin_env(t_block *block);
+void	print_envp(t_list *envp);
 int		builtin_exit(t_block *block);
 
 char	*find_exec(char *exec);
@@ -122,7 +134,7 @@ void	pipe_restore(t_block_info *info);
 void	stdin_manage(int fd_stdin, t_list *list_stdin);
 void	stdout_manage(int fd_stdout, t_list *list_stdout);
 
-char	*find_env(char *env, char **envp, int flag);
+char	*find_env(char *env, t_list *envp, int flag);
 
 void	free_list(t_list *list);
 void	free_block(t_block *block);

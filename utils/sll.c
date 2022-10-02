@@ -1,33 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linkedlist.c                                       :+:      :+:    :+:   */
+/*   sll.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:55:15 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:41:59 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 01:42:16 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	add_block(t_block_info *info, t_block *block)
-{
-	init_block(block);
-	if (info->head == NULL)
-	{
-		info->head = block;
-		info->tail = block;
-		return ;
-	}
-	else
-	{
-		info->tail->next = block;
-		block->prev = info->tail;
-		info->tail = block;
-	}
-}
 
 void	add_stdin(t_block *block, int fd)
 {
@@ -65,4 +48,12 @@ void	add_redir(t_block *block, int type, char *str)
 	redir->type = type;
 	redir->string = str;
 	ft_lstadd_back(&(block->redir), ft_lstnew(redir));
+}
+
+void	add_envp(char *key, char *value)
+{
+	t_dic *dic;
+
+	dic = make_dic(key, value);
+	ft_lstadd_back(&(g_data->envp), ft_lstnew(dic));
 }

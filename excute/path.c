@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:30:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/29 18:42:27 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 01:56:56 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 char	**split_path(void)
 {
-	int		idx;
+	char	*value;
 	char	**path;
 
-	idx = 0;
 	path = 0;
-	while (g_data->envp[idx] != 0)
-	{
-		if (ft_strncmp(g_data->envp[idx], "PATH=", 5) == 0)
-		path = ft_split(g_data->envp[idx] + 5, ':');
-		idx++;
-	}
+	value = find_env("$PATH", g_data->envp, 0);
+	if (value != 0)
+		path = ft_split(value, ':');
 	return (path);
 }
 

@@ -24,7 +24,9 @@ SRCS = main.c \
 		utils/init.c \
 		utils/string.c \
 		utils/string2.c \
-		utils/linkedlist.c \
+		utils/sll.c \
+		utils/dll.c \
+		utils/dic.c \
 		utils/utils.c \
 		utils/free.c \
 		utils/signal.c \

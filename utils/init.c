@@ -3,32 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 18:41:35 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/03 01:45:40 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_list	*init_list_envp(char **envp_arr)
+void	init_list_envp(char **envp_arr)
 {
-	t_list	*envp;
+	char	*key;
+	char	*value;
 	int		i;
 
 	i = 0;
-	envp = NULL;
 	while(envp_arr[i])
-		ft_lstadd_back(&envp, ft_lstnew(envp_arr[i++]));
-	return (envp);
+	{
+		key = split_key(envp_arr[i]);
+		value = split_value(envp_arr[i]);
+		if (key != 0 && value != 0)
+			add_envp(key, value);
+		i++;
+	}
 }
 
 void	init_g_data(char **envp)
 {
 	g_data = malloc(sizeof(t_data));
-	// g_data->envp = init_list_envp(envp);
-	g_data->envp = envp;
+	init_list_envp(envp);
 	g_data->past_return = 0;
 }
 
