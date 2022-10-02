@@ -17,12 +17,18 @@ int	builtin_env(t_block *block)
 	int	i;
 
 	i = 0;
+<<<<<<< HEAD
 	(void)block;
 	//if (block->argc != 1)
 		//return (1);
 	while (data->envp[i])
+=======
+	if (block->argc != 1)
+		return (1);
+	while (g_data->envp[i])
+>>>>>>> master
 	{
-		printf("%s\n", data->envp[i]);
+		printf("%s\n", g_data->envp[i]);
 		i++;
 	}
 	return (0);

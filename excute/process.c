@@ -29,19 +29,26 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 	else
 	{
 		execve(find_exec(block->argv->content), \
-			list_to_charptrptr(block->argv), data->envp);
+			list_to_charptrptr(block->argv), g_data->envp);
 		error(strerror(errno));
 	}
 }
 
 void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
+	int	status;
+
 	if (block->list_stdin != NULL)
 	{
 		close(pipe_input[0]);
 		stdin_manage(pipe_input[1], block->list_stdin);
 	}
-	wait(0);
+	if (wait(&status) == -1)
+		g_data->past_return = 1;
+	if (status != 0)
+		g_data->past_return = status / 256;
+	else
+		g_data->past_return = 0;
 	if (block->list_stdout != NULL)
 	{
 		close(pipe_output[1]);

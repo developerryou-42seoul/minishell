@@ -19,10 +19,10 @@ char	**split_path(void)
 
 	idx = 0;
 	path = 0;
-	while (data->envp[idx] != 0)
+	while (g_data->envp[idx] != 0)
 	{
-		if (ft_strncmp(data->envp[idx], "PATH=", 5) == 0)
-		path = ft_split(data->envp[idx] + 5, ':');
+		if (ft_strncmp(g_data->envp[idx], "PATH=", 5) == 0)
+		path = ft_split(g_data->envp[idx] + 5, ':');
 		idx++;
 	}
 	return (path);

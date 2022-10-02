@@ -12,19 +12,24 @@
 
 #include "minishell.h"
 
-void	init_g_data(char **envp)
+t_list	*init_list_envp(char **envp_arr)
 {
-	data = malloc(sizeof(t_data));
-	data->envp = envp;
-	data->past_return = 0;
+	t_list	*envp;
+	int		i;
+
+	i = 0;
+	envp = NULL;
+	while(envp_arr[i])
+		ft_lstadd_back(&envp, ft_lstnew(envp_arr[i++]));
+	return (envp);
 }
 
-int	init_terminal(struct termios *t)
+void	init_g_data(char **envp)
 {
-	tcgetattr(STDIN_FILENO, t);
-	t->c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, t);
-	return (0);
+	g_data = malloc(sizeof(t_data));
+	// g_data->envp = init_list_envp(envp);
+	g_data->envp = envp;
+	g_data->past_return = 0;
 }
 
 void	init_block(t_block *block)

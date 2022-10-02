@@ -12,35 +12,6 @@
 
 #include "minishell.h"
 
-void	signal_handler(int signum)
-{
-	if (signum == SIGINT)
-	{
-		printf("mini-0.0$ \n");
-		rl_on_new_line();
-		rl_replace_line("", 1);
-		rl_redisplay();
-	}
-}
-
-void	process_sigint(int signum)
-{
-	if (signum == SIGINT)
-		printf("\n");
-}
-
-void	setting_signal(void)
-{
-	signal(SIGINT, signal_handler);
-	signal(SIGQUIT, SIG_IGN);
-	signal(SIGTERM, SIG_IGN);
-}
-
-void	process_signal(void)
-{
-	signal(SIGINT, process_sigint);
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	char			*line;
@@ -48,10 +19,10 @@ int	main(int argc, char **argv, char **envp)
 	t_block_info	info;
 
 	init_g_data(envp);
-	init_terminal(&t);
 	while (1)
 	{
-		setting_signal();
+		set_terminal(&t);
+
 		info.head = NULL;
 		info.tail = NULL;
 		line = readline("mini-0.0$ ");
@@ -59,10 +30,10 @@ int	main(int argc, char **argv, char **envp)
 		{
 			if (*line)
 				add_history(line);
+			reset_terminal(&t);
 			parser(line, &info);
-			process_signal();
 			excute(&info);
-			chdir(find_env("$PWD", data->envp, 1));
+			chdir(find_env("$PWD", g_data->envp, 1));
 		}
 		else
 		{
