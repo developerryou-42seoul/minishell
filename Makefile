@@ -27,6 +27,7 @@ SRCS = main.c \
 		utils/linkedlist.c \
 		utils/utils.c \
 		utils/free.c \
+		utils/signal.c \
 		builtins/builtins.c \
 		builtins/builtin_pwd.c \
 		builtins/builtin_cd.c \

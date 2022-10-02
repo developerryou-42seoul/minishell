@@ -32,14 +32,6 @@ void	init_g_data(char **envp)
 	g_data->past_return = 0;
 }
 
-int	init_terminal(struct termios *t)
-{
-	tcgetattr(STDIN_FILENO, t);
-	t->c_lflag &= ~(ECHOCTL);
-	tcsetattr(STDIN_FILENO, TCSANOW, t);
-	return (0);
-}
-
 void	init_block(t_block *block)
 {
 	block->argc = 0;

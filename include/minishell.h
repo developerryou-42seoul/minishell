@@ -68,7 +68,6 @@ t_data	*g_data;
 
 t_list	*init_list_envp(char **envp_arr);
 void	init_g_data(char **envp);
-int		init_terminal(struct termios *t);
 void	init_block(t_block *block);
 
 void	error(char *str);
@@ -125,5 +124,11 @@ int		builtin_pwd(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_env(t_block *block);
 int		builtin_unset(t_block *block);
+
+void	parent_signal(int signum);
+void	child_signal(int signum);
+void	set_signal(void);
+void	set_terminal(struct termios *t);
+void	reset_terminal(struct termios *t);
 
 #endif
