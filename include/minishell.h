@@ -65,6 +65,7 @@ typedef struct s_data
 }	t_data;
 
 t_data	*data;
+// t_data	*g_data;
 
 t_list	*init_list_envp(char **envp_arr);
 void	init_g_data(char **envp);
@@ -89,6 +90,7 @@ char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 
 int		is_same_str(char *s1, char *s2);
+char	*mini_join_no_free(char *str, char ch);
 
 int		read_block(char **line, t_block_info *info, \
 char **str_argv, char **str_redir);
@@ -123,6 +125,6 @@ void	free_info(t_block_info *info);
 int		builtin_pwd(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_env(t_block *block);
-int		ft_unset(t_block *block);
+int		builtin_unset(t_block *block);
 
 #endif

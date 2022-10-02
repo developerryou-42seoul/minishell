@@ -12,20 +12,23 @@
 
 #include "minishell.h"
 
-int	ft_unset(t_block *block)
+void	set_key(t_block *block)
 {
-	char	*env_name;
 	t_list	*cur;
-	t_list	*prev;
 
-	env_name = block->argv->next;
-	cur = data->envp;
-	prev = NULL;
-	if (block->argc < 2)
-		return (1);	
+	cur = block->argv->next;
 	while (cur)
 	{
-		if (!ft_strncmp(cur->content, env_name, ft_strlen(env_name)))
+		cur->content = mini_join_no_free(cur->content, '=');
+		cur = cur->next;
+	}
+}
+
+void	ft_unset(t_list *cur, t_list *prev, t_list *env)
+{
+	while (cur)
+	{
+		if (!ft_strncmp(cur->content, env->content, ft_strlen(env->content)))
 		{
 			if (prev)
 			{
@@ -37,6 +40,26 @@ int	ft_unset(t_block *block)
 		}
 		prev = cur;
 		cur = cur->next;
+	}
+}
+
+int	builtin_unset(t_block *block)
+{
+	t_list	*env;
+	t_list	*cur;
+	t_list	*prev;
+	int		i;
+
+	i = 1;
+	set_key(block);
+	env = block->argv->next;
+	while (i < block->argc)
+	{
+		cur = g_data->envp;
+		prev = NULL;
+		ft_unset(cur, prev, env);
+		i++;
+		env = env->next;
 	}
 	return (0);
 }
