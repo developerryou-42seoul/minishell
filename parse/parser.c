@@ -42,11 +42,18 @@ int	parser(char *line, t_block_info *info)
 {
 	while (*line)
 	{
+		if (*line == '|')
+		{
+			printf("mini: syntax error near unexpected token `|'\n");
+			return (0);
+		}
 		line = parser_sub(line, info);
 		if (*line == '|')
+		{
 			line ++;
-		if (*line == '|')
-			error("parser");
+			if (*line == '|' || *line == '\0')
+				error("parser");
+		}
 	}
 	print_info(info);
 	return (0);
