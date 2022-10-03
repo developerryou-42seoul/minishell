@@ -1,23 +1,45 @@
 #include "minishell.h"
 
+static size_t	check_flag(t_list *curr)
+{
+	char	*argv;
+	int		flag;
+	size_t	i;
+
+	argv = (char *)curr->content;
+	flag = 0;
+	i = 2;
+	if (argv[0] == '-' && argv[1] == 'n')
+	{
+		flag = 1;
+		while (i < ft_strlen(argv))
+		{
+			if (argv[i] != 'n' && argv[i] != '\0')
+			{
+				flag = 0;
+				break ;
+			}
+			i++;
+		}
+	}
+	return (flag);
+}
+
 int	builtin_echo(t_block *block)
 {
-	t_list	*temp_list;
-	int		flag;
+	t_list	*curr;
+	size_t	flag;
 
-	flag = 0;
-	temp_list = block->argv->next;
-	if (!(ft_strncmp(temp_list->content, "-n", 2)))
+	curr = block->argv->next;
+	flag = check_flag(curr);
+	if (flag == 1)
+		curr = curr->next;
+	while (curr)
 	{
-		temp_list = temp_list->next;
-		flag = 1;
-	}
-	while (temp_list)
-	{
-		printf("%s", temp_list->content);
-		if (temp_list->next)
+		printf("%s", curr->content);
+		if (curr->next)
 			printf(" ");
-		temp_list = temp_list->next;
+		curr = curr->next;
 	}
 	if (flag == 0)
 		printf("\n");
