@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:48:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 10:06:55 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:20:41 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	check_builtins_after_fork(t_block *block)
 	exec = block->argv->content;
 	if (is_same_str(exec, "echo"))
 		return (1);
-	else if (is_same_str(exec, "cd"))
-		return (1);
 	else if (is_same_str(exec, "pwd"))
 		return (1);
 	else if (is_same_str(exec, "export") && block->argv->next == 0)
@@ -56,8 +54,6 @@ int	excute_builtins_after_fork(t_block *block)
 	exec = block->argv->content;
 	if (is_same_str(exec, "echo"))
 		return (builtin_echo(block));
-	else if (is_same_str(exec, "cd"))
-		return (builtin_cd(block));
 	else if (is_same_str(exec, "pwd"))
 		return (builtin_pwd(block));
 	else if (is_same_str(exec, "export") && block->argv->next == 0)
@@ -79,6 +75,8 @@ int	check_builtins_before_fork(t_block *block)
 		return (1);
 	else if (is_same_str(exec, "exit"))
 		return (1);
+	else if (is_same_str(exec, "cd"))
+		return (1);
 	else
 		return (0);
 }
@@ -94,6 +92,8 @@ int	excute_builtins_before_fork(t_block *block)
 		return (builtin_unset(block));
 	else if (is_same_str(exec, "exit"))
 		return (builtin_exit(block));
+	else if (is_same_str(exec, "cd"))
+		return (builtin_cd(block));
 	else
 		return (g_data->past_return);
 }
