@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 10:11:46 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 16:27:47 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int		builtin_echo(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_pwd(t_block *block);
 int		builtin_unset(t_block *block);
+void	push_argv_to_envp(t_list *argv);
 int		builtin_export(t_block *block);
 int		builtin_env(t_block *block);
 void	print_envp(t_list *envp);

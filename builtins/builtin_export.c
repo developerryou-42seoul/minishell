@@ -4,6 +4,7 @@ void	push_argv_to_envp(t_list *argv)
 {
 	char	*key;
 	char	*value;
+
 	while (argv)
 	{
 		key = split_key(argv->content);
