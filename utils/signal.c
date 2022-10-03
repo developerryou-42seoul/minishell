@@ -16,10 +16,7 @@ void	child_signal(int signum)
 	if (signum == SIGINT)
 		printf("\n");
 	if (signum == SIGQUIT)
-	{
 		printf("Quit: 3\n");
-		exit(1);
-	}	
 }
 
 void	set_signal(void)
