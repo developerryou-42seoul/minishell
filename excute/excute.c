@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/09/29 20:26:15 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:06:12 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ void	excute(t_block_info *info)
 			add_stdout(block, block->pipe_fd[1]);
 		}
 		make_redirection(block);
-		runprocess(block);
+		if (check_builtins_before_fork(block))
+			g_data->past_return = excute_builtins_before_fork(block);
+		else
+			runprocess(block);
 		block = block->next;
 	}
 }

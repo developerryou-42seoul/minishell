@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:58:13 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/03 01:02:23 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:00:41 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 		close(pipe_output[0]);
 		dup2(pipe_output[1], STDOUT);
 	}
-	if (check_builtins(block))
-		exit(manage_builtins(block));
+	if (check_builtins_after_fork(block))
+		exit(excute_builtins_after_fork(block));
 	else
 	{
 		execve(find_exec(block->argv->content), \

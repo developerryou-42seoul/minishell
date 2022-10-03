@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/10/03 01:48:16 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:11:32 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 
 char	*find_env(char *env, t_list *envp, int flag)
 {
-	size_t	len;
-
 	if (!ft_strncmp(env, "$?", 2))
 		return (ft_itoa(g_data->past_return));
-	env++;
-	len = ft_strlen(env);
 	while (envp)
 	{
-		if (len == ft_strlen(((t_dic *)envp->content)->key) && 
-		(ft_strncmp(env, ((t_dic *)envp->content)->key, len) == 0))
+		if (is_same_str(env + 1, ((t_dic *)envp->content)->key))
 			return (((t_dic *)envp->content)->value);
 		envp = envp->next;
 	}
@@ -31,4 +26,19 @@ char	*find_env(char *env, t_list *envp, int flag)
 		return ("");
 	else
 		return (NULL);
+}
+
+int	change_env(t_list *envp, char *key, char *value)
+{
+	while (envp)
+	{
+		if (is_same_str(key, ((t_dic *)envp->content)->key))
+		{
+			free(((t_dic *)envp->content)->value);
+			((t_dic *)envp->content)->value = value;
+			return (1);
+		}
+		envp = envp->next;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:48:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 21:32:30 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:06:55 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,26 @@ int	builtin_exit(t_block *block)
 	return (0);
 }
 
-int	check_builtins(t_block *block)
+int	check_builtins_after_fork(t_block *block)
 {
 	char	*exec;
 
 	exec = block->argv->content;
-	if (is_same_str(exec, "echo") \
-	|| is_same_str(exec, "cd") \
-	|| is_same_str(exec, "pwd") \
-	|| is_same_str(exec, "export") \
-	|| is_same_str(exec, "unset") \
-	|| is_same_str(exec, "env") \
-	|| is_same_str(exec, "exit"))
+	if (is_same_str(exec, "echo"))
+		return (1);
+	else if (is_same_str(exec, "cd"))
+		return (1);
+	else if (is_same_str(exec, "pwd"))
+		return (1);
+	else if (is_same_str(exec, "export") && block->argv->next == 0)
+		return (1);
+	else if (is_same_str(exec, "env"))
 		return (1);
 	else
 		return (0);
 }
 
-int	manage_builtins(t_block *block)
+int	excute_builtins_after_fork(t_block *block)
 {
 	char	*exec;
 
@@ -58,14 +60,40 @@ int	manage_builtins(t_block *block)
 		return (builtin_cd(block));
 	else if (is_same_str(exec, "pwd"))
 		return (builtin_pwd(block));
-	else if (is_same_str(exec, "export"))
+	else if (is_same_str(exec, "export") && block->argv->next == 0)
+		return (builtin_export(block));
+	else if (is_same_str(exec, "env"))
+		return (builtin_env(block));
+	else
+		return (255);
+}
+
+int	check_builtins_before_fork(t_block *block)
+{
+	char	*exec;
+
+	exec = block->argv->content;
+	if (is_same_str(exec, "export") && block->argv->next != 0)
+		return (1);
+	else if (is_same_str(exec, "unset"))
+		return (1);
+	else if (is_same_str(exec, "exit"))
+		return (1);
+	else
+		return (0);
+}
+
+int	excute_builtins_before_fork(t_block *block)
+{
+	char	*exec;
+
+	exec = block->argv->content;
+	if (is_same_str(exec, "export") && block->argv->next != 0)
 		return (builtin_export(block));
 	else if (is_same_str(exec, "unset"))
 		return (builtin_unset(block));
-	else if (is_same_str(exec, "env"))
-		return (builtin_env(block));
 	else if (is_same_str(exec, "exit"))
 		return (builtin_exit(block));
 	else
-		return (255);
+		return (g_data->past_return);
 }

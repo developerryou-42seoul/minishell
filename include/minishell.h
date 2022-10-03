@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 01:45:28 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/03 10:11:46 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,10 @@ int		is_redir(t_block *block, char *line);
 void	excute(t_block_info *info);
 void	runprocess(t_block *block);
 
-int		manage_builtins(t_block *block);
-int		check_builtins(t_block *block);
+int		check_builtins_before_fork(t_block *block);
+int		excute_builtins_before_fork(t_block *block);
+int		check_builtins_after_fork(t_block *block);
+int		excute_builtins_after_fork(t_block *block);
 int		builtin_echo(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_pwd(t_block *block);
@@ -135,6 +137,7 @@ void	stdin_manage(int fd_stdin, t_list *list_stdin);
 void	stdout_manage(int fd_stdout, t_list *list_stdout);
 
 char	*find_env(char *env, t_list *envp, int flag);
+int		change_env(t_list *envp, char *key, char *value);
 
 void	free_list(t_list *list);
 void	free_block(t_block *block);
