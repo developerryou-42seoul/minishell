@@ -35,6 +35,8 @@ SRCS = main.c \
 		builtins/builtin_pwd.c \
 		builtins/builtin_cd.c \
 		builtins/builtin_env.c \
+		builtins/builtin_echo.c \
+		builtins/builtin_exit.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c 
 

@@ -12,19 +12,7 @@
 
 #include "minishell.h"
 
-int	builtin_echo(t_block *block)
-{
-	(void)block;
-	return (0);
-}
-
 int	builtin_unset(t_block *block)
-{
-	(void)block;
-	return (0);
-}
-
-int	builtin_exit(t_block *block)
 {
 	(void)block;
 	return (0);
