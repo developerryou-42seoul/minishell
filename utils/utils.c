@@ -12,19 +12,6 @@
 
 #include "minishell.h"
 
-void	error(char *str)
-{
-	printf("%s ", str);
-	printf("error\n");
-	exit(1);
-}
-
-void	error_cnf(char *str, char *exec)
-{
-	printf("%s:%s\n", exec, str);
-	exit(127);
-}
-
 char	**diclist_to_charptrptr(t_list *list)
 {
 	char	**ret;
