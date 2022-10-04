@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 16:46:07 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:37:24 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,12 @@ int	parser(char *line, t_block_info *info)
 {
 	while (*line)
 	{
-		while (*line == '\t' || *line == '\n' || *line == '\v' || *line == '\f'
+		while (*line == '\t' || *line == '\n' || *line == '\v' || *line == '\f' \
 		|| *line == '\r' || *line == ' ')
 			line++;
 		if (*line == '|')
 		{
 			printf("mini: syntax error near unexpected token `|'\n");
-			return (0);
-		}
-		if (*line == '>' || *line == '<')
-		{
-			printf("ddddd\n");
 			return (0);
 		}
 		line = parser_sub(line, info);

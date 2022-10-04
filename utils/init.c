@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 01:45:40 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 17:38:08 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_list_envp(char **envp_arr)
 	int		i;
 
 	i = 0;
-	while(envp_arr[i])
+	while (envp_arr[i])
 	{
 		key = split_key(envp_arr[i]);
 		value = split_value(envp_arr[i]);

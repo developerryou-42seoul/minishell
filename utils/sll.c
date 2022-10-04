@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sll.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:55:15 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 01:42:16 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 17:38:56 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	add_redir(t_block *block, int type, char *str)
 
 void	add_envp(char *key, char *value)
 {
-	t_dic *dic;
+	t_dic	*dic;
 
 	dic = make_dic(key, value);
 	ft_lstadd_back(&(g_data->envp), ft_lstnew(dic));
