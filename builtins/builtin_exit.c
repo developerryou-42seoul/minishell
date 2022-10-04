@@ -29,17 +29,23 @@ int	builtin_exit(t_block *block)
 			return (1); //종료되면 안됨, 수정필요
 		}
 		else 
+		{
 			printf("mini: exit: %s: numeric argument required\n", \
 					block->argv->next->content);
-		exit(1);	
+			exit(255);
+		}	
 	}
 	else if (block->argc == 2)
 	{
 		if (!check_numeric(block))
+		{
 			printf("mini: exit: %s: numeric argument required\n", \
 					block->argv->next->content);
-		exit (1);
+			exit(255);
+		}
+		exit (ft_atoi(block->argv->next->content));
 	}
-	exit(0);
+	else
+		exit(0);
 	return (0);
 }
