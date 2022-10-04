@@ -20,6 +20,7 @@ void	parent_signal(int signum)
 		rl_on_new_line();
 		rl_replace_line("", 1);
 		rl_redisplay();
+		g_data->past_return = 1;
 	}
 }
 
