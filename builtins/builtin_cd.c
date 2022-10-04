@@ -31,7 +31,7 @@ static int	home_cd(char *home, t_block *block)
 
 	dir = ft_strjoin(home, (char *)(block->argv->next->content) + 1);
 	if (chdir(dir))
-		return(error_cd(strerror(errno), block->argv->next->content));
+		return (error_cd(strerror(errno), block->argv->next->content));
 	free(dir);
 	return (0);
 }
@@ -58,7 +58,7 @@ int	builtin_cd(t_block *block)
 	if (block->argc == 1)
 	{
 		if (chdir(home))
-			return(error_cd(strerror(errno), block->argv->next->content));
+			return (error_cd(strerror(errno), block->argv->next->content));
 	}
 	else if (*((char *)(block->argv->next->content)) == '~')
 	{
@@ -66,7 +66,7 @@ int	builtin_cd(t_block *block)
 			return (home_cd(home, block));
 	}
 	else if (chdir(block->argv->next->content))
-		return(error_cd(strerror(errno), block->argv->next->content));
+		return (error_cd(strerror(errno), block->argv->next->content));
 	dir = getcwd(NULL, 0);
 	export_env(ft_strjoin("PWD=", dir), ft_strjoin("OLDPWD=", pwd));
 	free(dir);

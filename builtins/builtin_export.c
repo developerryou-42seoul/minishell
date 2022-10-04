@@ -21,8 +21,8 @@ int	is_space_key(char *key)
 		return (1);
 	while (key[i])
 	{
-		if  (key[i] == '\t' || key[i] == '\n' || key[i] == '\v' || key[i] == '\f' \
-		|| key[i] == '\r' || key[i] == ' ')
+		if (key[i] == '\t' || key[i] == '\n' || key[i] == '\v' \
+		|| key[i] == '\f' || key[i] == '\r' || key[i] == ' ')
 			return (1);
 		i++;
 	}
@@ -38,7 +38,7 @@ int	push_argv_to_envp(t_list *argv)
 	{
 		key = split_key(argv->content);
 		if (is_space_key(key))
-			return(error_export("not a valid identifier", key));
+			return (error_export("not a valid identifier", key));
 		value = split_value(argv->content);
 		if (key != 0 && value != 0)
 		{
