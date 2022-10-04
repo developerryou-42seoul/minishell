@@ -70,7 +70,7 @@ char	*find_exec(char *exec)
 				return (ret);
 			idx++;
 		}
-		error_cnf("command not found", exec);
+		g_data->past_return =  error_cnf("command not found", exec);
 	}
 	return (exec);
 }

@@ -30,6 +30,7 @@ SRCS = main.c \
 		utils/utils.c \
 		utils/free.c \
 		utils/signal.c \
+		utils/error.c \
 		builtins/builtins.c \
 		builtins/builtin_export.c \
 		builtins/builtin_pwd.c \
