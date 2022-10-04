@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:45:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 21:05:20 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 21:44:18 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,34 @@ static int	is_dollar(t_block *block, char ch)
 	return (0);
 }
 
-
 char	*change_dollar(char *line)
 {
 	char	*env;
 	char	*changed_line;
+	int		quote_out;
 	t_block	block;
 
 	create_empty(&changed_line);
 	create_empty(&env);
 	init_block(&block);
+	quote_out = 0;
 	while (*line)
 	{
 		if (quote(&block, *line))
 		{	
-			if (!block.dollar)
+			if (!quote_out && !block.dollar)
+				quote_out = 1;
+			else if (quote_out && !block.dollar)
+				quote_out = 0;
+			else if (quote_out && block.dollar)
+			{
+				quote_out = 0;
+				changed_line = mini_join_str(changed_line, find_env(env, g_data->envp, 1));
+				free(env);
+				create_empty(&env);
+				block.dollar = 0;
+			}
+			if (quote_out || !block.dollar)
 				changed_line = mini_join(changed_line, *line);
 			line++;
 			continue ;
