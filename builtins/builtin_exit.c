@@ -1,7 +1,5 @@
 #include "minishell.h"
 
-#include "minishell.h"
-
 static int	check_numeric(t_block *block)
 {
 	char *str;
