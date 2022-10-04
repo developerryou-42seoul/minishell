@@ -129,6 +129,7 @@ int		builtin_export(t_block *block);
 int		builtin_env(t_block *block);
 void	print_envp(t_list *envp);
 int		builtin_exit(t_block *block);
+int		check_exit(t_block *block);
 
 char	*find_exec(char *exec);
 

@@ -19,6 +19,21 @@ static int	check_numeric(t_block *block)
 	return (1);
 }
 
+int	check_exit(t_block *block)
+{
+	if (is_same_str(block->argv->content, "exit") && !block->next && !block->prev)
+	{
+		if (block->argc > 2)
+		{
+			if (check_numeric(block))
+				return(0);
+		}
+		printf("exit\n");
+		return (1);
+	}
+	return (0);
+}
+
 int	builtin_exit(t_block *block)
 {
 	if (block->argc > 2)
