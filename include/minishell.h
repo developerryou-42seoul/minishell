@@ -76,6 +76,7 @@ void	init_g_data(char **envp);
 void	init_block(t_block *block);
 
 void	error(char *str);
+void	error_cnf(char *str, char *exec);
 char	**list_to_charptrptr(t_list *list);
 char	**diclist_to_charptrptr(t_list *list);
 
