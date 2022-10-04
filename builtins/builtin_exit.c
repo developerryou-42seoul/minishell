@@ -54,14 +54,11 @@ int	builtin_exit(t_block *block)
 		if (check_numeric(block))
 		{
 			printf("mini: exit: too many arguments\n");
-			return (1); //종료되면 안됨, 수정필요
+			return (1);
 		}
-		else
-		{
-			printf("mini: exit: %s: numeric argument required\n", \
-					block->argv->next->content);
-			exit(255);
-		}	
+		printf("mini: exit: %s: numeric argument required\n", \
+				block->argv->next->content);
+		exit(255);
 	}
 	else if (block->argc == 2)
 	{
