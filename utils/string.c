@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 16:44:52 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 19:11:29 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,6 @@ int	is_end(t_block *block, char ch)
 	if (is_in_quote(block))
 		return (0);
 	else if (ch == '|')
-		return (1);
-	return (0);
-}
-
-int	is_space(t_block *block, char ch)
-{
-	if (is_in_quote(block))
-		return (0);
-	if (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f'
-		|| ch == '\r' || ch == ' ')
 		return (1);
 	return (0);
 }

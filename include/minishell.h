@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 17:57:00 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 19:15:14 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,24 +93,23 @@ char	*dic_to_charptr(t_dic *dic);
 char	*split_key(char *env);
 char	*split_value(char *env);
 
-void	create_empty(char **str);
-int		is_space(t_block *block, char ch);
-int		is_end(t_block *block, char ch);
 char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
+void	create_empty(char **str);
 
-int		is_same_str(char *s1, char *s2);
-
-int		read_block(char **line, t_block_info *info, \
-char **str_argv, char **str_redir);
+void	read_block(char **line, t_block_info *info);
 
 void	print_info(t_block_info *info);
 void	print_block(t_block *block);
 
-int		is_in_quote(t_block *block);
 int		quote(t_block *block, char ch);
+int		is_in_quote(t_block *block);
 
+int		is_space(t_block *block, char ch);
+int		is_end(t_block *block, char ch);
+int		is_same_str(char *s1, char *s2);
 int		is_redir(t_block *block, char *line);
+int		is_esr(t_block *block, char **line);
 
 void	excute(t_block_info *info);
 void	runprocess(t_block *block);
@@ -119,6 +118,7 @@ int		check_builtins_before_fork(t_block *block);
 int		excute_builtins_before_fork(t_block *block);
 int		check_builtins_after_fork(t_block *block);
 int		excute_builtins_after_fork(t_block *block);
+
 int		builtin_echo(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_pwd(t_block *block);
@@ -141,14 +141,7 @@ void	stdout_manage(int fd_stdout, t_list *list_stdout);
 char	*find_env(char *env, t_list *envp, int flag);
 int		change_env(t_list *envp, char *key, char *value);
 
-void	free_list(t_list *list);
-void	free_block(t_block *block);
 void	free_info(t_block_info *info);
-
-int		builtin_pwd(t_block *block);
-int		builtin_cd(t_block *block);
-int		builtin_env(t_block *block);
-int		builtin_unset(t_block *block);
 
 void	parent_signal(int signum);
 void	child_signal(int signum);

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/10/03 10:11:32 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 18:12:58 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	change_env(t_list *envp, char *key, char *value)
 	{
 		if (is_same_str(key, ((t_dic *)envp->content)->key))
 		{
+			free(key);
 			free(((t_dic *)envp->content)->value);
 			((t_dic *)envp->content)->value = value;
 			return (1);

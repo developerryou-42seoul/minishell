@@ -14,7 +14,6 @@ SRCS = main.c \
 		print.c \
 		parse/quotes.c \
 		parse/parser.c \
-		parse/redir.c \
 		parse/expand.c \
 		parse/read_block.c \
 		excute/excute.c \
