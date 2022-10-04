@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/03 16:20:41 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:43:23 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ void	open_redirection_stdin(t_redir *redir, t_block *block)
 			buf = get_next_line(STDIN);
 			if (buf == 0)
 				break ;
-			if (ft_strlen(buf) - 1 == ft_strlen(redir->string) && 
+			if (ft_strlen(buf) - 1 == ft_strlen(redir->string) && \
 			ft_strncmp(buf, redir->string, ft_strlen(redir->string)) == 0)
 			{
 				free(buf);
 				close(pipe_fd[1]);
-				break;
+				break ;
 			}
 			ft_putstr_fd(buf, pipe_fd[1]);
 			free(buf);

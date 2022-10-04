@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 20:18:24 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:47:18 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,19 @@ static int	check_dollar(t_block *block, char **line, char **str, char **env)
 	return (0);
 }
 
+static int	is_esr(t_block *block, char **line)
+{
+	return (!is_end(block, **line) && !is_space(block, **line) \
+			&& !is_redir(block, *line));
+}
+
 static int	read_one_char(t_block *block, char **line, char **str)
 {
 	char	*env;
 
 	create_empty(&env);
 	block->dollar = 0;
-	while (!is_end(block, **line) && !is_space(block, **line) && \
-		!is_redir(block, *line))
+	while (is_esr(block, line))
 	{
 		if (quote(block, **line))
 		{
