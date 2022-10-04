@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:36:43 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/26 17:28:23 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 17:54:25 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,12 @@ void	print_info(t_block_info *info)
 	printf("\n");
 }
 
-void	print_block(t_block *block)
+static void	print_block_sub(t_block *block)
 {
 	t_list	*cur;
 	t_redir	*redir;
 
-	cur = block->argv;
-	printf("***argv***\n");
-	while (cur)
-	{
-		printf("%s\n", cur->content);
-		cur = cur->next;
-	}
 	cur = block->redir;
-	printf("***redir***\n");
 	while (cur)
 	{
 		redir = cur->content;
@@ -59,4 +51,20 @@ void	print_block(t_block *block)
 		printf("%s\n", redir->string);
 		cur = cur->next;
 	}
+}
+
+void	print_block(t_block *block)
+{
+	t_list	*cur;
+	t_redir	*redir;
+
+	cur = block->argv;
+	printf("***argv***\n");
+	while (cur)
+	{
+		printf("%s\n", cur->content);
+		cur = cur->next;
+	}
+	printf("***redir***\n");
+	print_block_sub(block);
 }
