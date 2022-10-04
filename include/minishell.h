@@ -100,7 +100,6 @@ char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 
 int		is_same_str(char *s1, char *s2);
-int		ft_strcmp(const char *s1, const char *s2);
 
 int		read_block(char **line, t_block_info *info, \
 char **str_argv, char **str_redir);
