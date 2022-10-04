@@ -67,6 +67,7 @@ typedef struct s_data
 {
 	int		past_return;
 	t_list	*envp;
+	struct termios	t;
 }	t_data;
 
 t_data	*g_data;

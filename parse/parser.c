@@ -55,6 +55,6 @@ int	parser(char *line, t_block_info *info)
 				error("parser");
 		}
 	}
-	print_info(info);
+//	print_info(info);
 	return (0);
 }

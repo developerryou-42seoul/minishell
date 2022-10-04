@@ -15,14 +15,12 @@
 int	main(int argc, char **argv, char **envp)
 {
 	char			*line;
-	struct termios	t;
 	t_block_info	info;
 
 	init_g_data(envp);
 	while (1)
 	{
-		set_terminal(&t);
-
+	set_terminal(&g_data->t);
 		info.head = NULL;
 		info.tail = NULL;
 		line = readline("mini-0.0$ ");
@@ -30,7 +28,7 @@ int	main(int argc, char **argv, char **envp)
 		{
 			if (*line)
 				add_history(line);
-			reset_terminal(&t);
+			reset_terminal(&g_data->t);
 			parser(line, &info);
 			excute(&info);
 			chdir(find_env("$PWD", g_data->envp, 1));

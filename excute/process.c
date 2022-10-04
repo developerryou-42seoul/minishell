@@ -14,6 +14,7 @@
 
 void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
+	reset_terminal(&g_data->t);
 	if (block->list_stdin != NULL)
 	{
 		close(pipe_input[1]);
@@ -45,6 +46,11 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 	}
 	if (wait(&status) == -1)
 		g_data->past_return = 1;
+	if (is_same_str(block->argv->content, "exit") && !block->next && !block->prev)
+	{
+		printf("exit\n");
+		exit(0);
+	}
 	if (status != 0)
 		g_data->past_return = status / 256;
 	else

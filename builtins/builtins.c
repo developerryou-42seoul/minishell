@@ -12,12 +12,6 @@
 
 #include "minishell.h"
 
-int	builtin_unset(t_block *block)
-{
-	(void)block;
-	return (0);
-}
-
 int	check_builtins_after_fork(t_block *block)
 {
 	char	*exec;
@@ -30,6 +24,8 @@ int	check_builtins_after_fork(t_block *block)
 	else if (is_same_str(exec, "export") && block->argv->next == 0)
 		return (1);
 	else if (is_same_str(exec, "env"))
+		return (1);
+	else if (is_same_str(exec, "exit"))
 		return (1);
 	else
 		return (0);
@@ -48,6 +44,8 @@ int	excute_builtins_after_fork(t_block *block)
 		return (builtin_export(block));
 	else if (is_same_str(exec, "env"))
 		return (builtin_env(block));
+	else if (is_same_str(exec, "exit"))
+		return (builtin_exit(block));
 	else
 		return (255);
 }
@@ -60,8 +58,6 @@ int	check_builtins_before_fork(t_block *block)
 	if (is_same_str(exec, "export") && block->argv->next != 0)
 		return (1);
 	else if (is_same_str(exec, "unset"))
-		return (1);
-	else if (is_same_str(exec, "exit"))
 		return (1);
 	else if (is_same_str(exec, "cd"))
 		return (1);
@@ -78,8 +74,6 @@ int	excute_builtins_before_fork(t_block *block)
 		return (builtin_export(block));
 	else if (is_same_str(exec, "unset"))
 		return (builtin_unset(block));
-	else if (is_same_str(exec, "exit"))
-		return (builtin_exit(block));
 	else if (is_same_str(exec, "cd"))
 		return (builtin_cd(block));
 	else

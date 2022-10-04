@@ -19,15 +19,10 @@ void	child_signal(int signum)
 		printf("Quit: 3\n");
 }
 
-void	set_signal(void)
+void	set_terminal(struct termios *t)
 {
 	signal(SIGINT, parent_signal);
 	signal(SIGQUIT, SIG_IGN);
-}
-
-void	set_terminal(struct termios *t)
-{
-	set_signal();
 	tcgetattr(STDIN_FILENO, t);
 	t->c_lflag &= ~(ECHOCTL);
 	tcsetattr(STDIN_FILENO, TCSANOW, t);
