@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:48:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 10:20:41 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:11:53 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	check_builtins_after_fork(t_block *block)
 {
 	char	*exec;
 
+	if (block->argv == 0)
+		return (0);
 	exec = block->argv->content;
 	if (is_same_str(exec, "echo"))
 		return (1);
@@ -35,6 +37,8 @@ int	excute_builtins_after_fork(t_block *block)
 {
 	char	*exec;
 
+	if (block->argv == 0)
+		return (255);
 	exec = block->argv->content;
 	if (is_same_str(exec, "echo"))
 		return (builtin_echo(block));
@@ -54,6 +58,8 @@ int	check_builtins_before_fork(t_block *block)
 {
 	char	*exec;
 
+	if (block->argv == 0)
+		return (0);
 	exec = block->argv->content;
 	if (is_same_str(exec, "export") && block->argv->next != 0)
 		return (1);
@@ -69,6 +75,8 @@ int	excute_builtins_before_fork(t_block *block)
 {
 	char	*exec;
 
+	if (block->argv == 0)
+		return (g_data->past_return);
 	exec = block->argv->content;
 	if (is_same_str(exec, "export") && block->argv->next != 0)
 		return (builtin_export(block));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:35:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 17:36:05 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 20:28:28 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ static int	check_numeric(t_block *block)
 
 int	check_exit(t_block *block)
 {
-	if (is_same_str(block->argv->content, "exit") && \
-	!block->next && !block->prev)
+	if (block->argv != 0 && \
+		is_same_str(block->argv->content, "exit") && \
+		!block->next && !block->prev)
 	{
-		if (block->argc > 2)
-		{
-			if (check_numeric(block))
-				return (0);
-		}
+		if (block->argc > 2 && check_numeric(block))
+			return (0);
 		printf("exit\n");
 		return (1);
 	}
