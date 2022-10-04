@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 17:57:00 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 20:06:51 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,5 +155,7 @@ void	child_signal(int signum);
 void	set_signal(void);
 void	set_terminal(struct termios *t);
 void	reset_terminal(struct termios *t);
+
+char	*change_dollar(char *line);
 
 #endif
