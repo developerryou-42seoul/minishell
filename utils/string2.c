@@ -19,25 +19,3 @@ int	is_same_str(char *s1, char *s2)
 		return (1);
 	return (0);
 }
-
-char	*mini_join_no_free(char *str, char ch)
-{
-	int		i;
-	char	*ret;
-
-	i = 0;
-	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (!ret)
-	{
-		free(str);
-		return (NULL);
-	}
-	while (str[i])
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i++] = ch;
-	ret[i] = '\0';
-	return (ret);
-}
