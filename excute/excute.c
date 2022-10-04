@@ -3,14 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   excute.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/03 16:20:41 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:42:24 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	open_redirection_heredoc(t_redir *redir, t_block *block)
+{
+	int		pipe_fd[2];
+	char	*buf;
+
+	if (pipe(pipe_fd) < 0)
+		error(strerror(errno));
+	while (1)
+	{
+		ft_putstr_fd("heredoc> ", STDOUT);
+		buf = get_next_line(STDIN);
+		if (buf == 0)
+			break ;
+		if (ft_strlen(buf) - 1 == ft_strlen(redir->string) && \
+			ft_strncmp(buf, redir->string, ft_strlen(redir->string)) == 0)
+		{
+			free(buf);
+			close(pipe_fd[1]);
+			break ;
+		}
+		ft_putstr_fd(buf, pipe_fd[1]);
+		free(buf);
+	}
+	add_stdin(block, pipe_fd[0]);
+}
 
 void	open_redirection_stdin(t_redir *redir, t_block *block)
 {
@@ -26,27 +52,7 @@ void	open_redirection_stdin(t_redir *redir, t_block *block)
 		add_stdin(block, fd);
 	}
 	else if (redir->type == 3)
-	{
-		if (pipe(pipe_fd) < 0)
-			error(strerror(errno));
-		while (1)
-		{
-			ft_putstr_fd("heredoc> ", STDOUT);
-			buf = get_next_line(STDIN);
-			if (buf == 0)
-				break ;
-			if (ft_strlen(buf) - 1 == ft_strlen(redir->string) && 
-			ft_strncmp(buf, redir->string, ft_strlen(redir->string)) == 0)
-			{
-				free(buf);
-				close(pipe_fd[1]);
-				break;
-			}
-			ft_putstr_fd(buf, pipe_fd[1]);
-			free(buf);
-		}
-		add_stdin(block, pipe_fd[0]);
-	}
+		open_redirection_heredoc(redir, block);
 }
 
 void	open_redirection_stdout(t_redir *redir, t_block *block)

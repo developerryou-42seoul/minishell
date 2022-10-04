@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 16:27:47 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:44:34 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_block_info
 
 typedef struct s_data
 {
-	int		past_return;
-	t_list	*envp;
+	int				past_return;
+	t_list			*envp;
 	struct termios	t;
 }	t_data;
 
