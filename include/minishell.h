@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 16:27:47 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:51:47 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ typedef struct s_block_info
 
 typedef struct s_data
 {
-	int		past_return;
-	t_list	*envp;
+	int				past_return;
+	t_list			*envp;
 	struct termios	t;
 }	t_data;
 
