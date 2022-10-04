@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-void	ft_unset(t_list *cur, t_list *prev, t_list *env, int count)
+void	ft_unset(t_list *cur, t_list *prev, t_list *env)
 {
 	t_dic	*dic;
 
@@ -28,7 +28,6 @@ void	ft_unset(t_list *cur, t_list *prev, t_list *env, int count)
 			}
 			free(dic);
 			free(cur);
-			count++;
 			break ;
 		}
 		prev = cur;
@@ -42,21 +41,16 @@ int	builtin_unset(t_block *block)
 	t_list	*cur;
 	t_list	*prev;
 	int		i;
-	int		count;
 
 	i = 1;
-	count = 0;
 	env = block->argv->next;
 	while (i < block->argc)
 	{
 		cur = g_data->envp;
 		prev = NULL;
-		ft_unset(cur, prev, env, count);
+		ft_unset(cur, prev, env);
 		i++;
 		env = env->next;
 	}
-	if (count + 1 == block->argc)
-		return (0);
-	else
-		return (127);
+	return (0);
 }
