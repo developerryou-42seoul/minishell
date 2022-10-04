@@ -19,3 +19,17 @@ int	is_same_str(char *s1, char *s2)
 		return (1);
 	return (0);
 }
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	idx;
+
+	idx = 0;
+	while (s1[idx] != '\0' && s2[idx] != '\0')
+	{
+		if (s1[idx] != s2[idx])
+			return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
+		idx++;
+	}
+	return ((unsigned char)s1[idx] - (unsigned char)s2[idx]);
+}

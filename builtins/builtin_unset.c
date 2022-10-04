@@ -19,7 +19,7 @@ void	ft_unset(t_list *cur, t_list *prev, t_list *env)
 	while (cur)
 	{
 		dic = cur->content;
-		if (!ft_strncmp(dic->key, env->content, ft_strlen(env->content)))
+		if (!ft_strcmp(dic->key, env->content))
 		{
 			if (prev)
 			{
