@@ -26,12 +26,14 @@ void	ft_unset(t_list *cur, t_list *prev, t_list *env)
 				prev->next = cur->next;
 				cur->next = NULL;
 			}
+			free(dic->key);
+			free(dic->value);
 			free(dic);
 			free(cur);
 			break ;
 		}
 		prev = cur;
-		cur = cur->next;
+		cur = prev->next;
 	}
 }
 
