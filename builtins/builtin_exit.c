@@ -5,6 +5,9 @@ static int	check_numeric(t_block *block)
 	char *str;
 
 	str = block->argv->next->content;
+	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
+		|| *str == '\r' || *str == ' ')
+		str++;
 	if (*str == '+' || *str == '-')
 		str++;
 	if (*str == '\0')
