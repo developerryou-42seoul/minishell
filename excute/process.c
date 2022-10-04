@@ -32,7 +32,7 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 		execve(find_exec(block->argv->content), \
 			list_to_charptrptr(block->argv), \
 			diclist_to_charptrptr(g_data->envp));
-		error(strerror(errno));
+		//error(strerror(errno));
 	}
 }
 

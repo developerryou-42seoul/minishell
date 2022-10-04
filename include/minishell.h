@@ -76,7 +76,10 @@ void	init_g_data(char **envp);
 void	init_block(t_block *block);
 
 void	error(char *str);
-void	error_cnf(char *str, char *exec);
+int		error_cnf(char *str, char *exec);
+int		error_cd(char *str, char *name);
+int		error_export(char *str, char *key);
+
 char	**list_to_charptrptr(t_list *list);
 char	**diclist_to_charptrptr(t_list *list);
 
@@ -124,7 +127,7 @@ int		builtin_echo(t_block *block);
 int		builtin_cd(t_block *block);
 int		builtin_pwd(t_block *block);
 int		builtin_unset(t_block *block);
-void	push_argv_to_envp(t_list *argv);
+int		push_argv_to_envp(t_list *argv);
 int		builtin_export(t_block *block);
 int		builtin_env(t_block *block);
 void	print_envp(t_list *envp);
