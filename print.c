@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 19:36:43 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 17:54:25 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 18:01:00 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	print_block_sub(t_block *block)
 void	print_block(t_block *block)
 {
 	t_list	*cur;
-	t_redir	*redir;
 
 	cur = block->argv;
 	printf("***argv***\n");

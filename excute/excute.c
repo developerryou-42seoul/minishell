@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/04 17:55:51 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 18:01:12 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	open_redirection_heredoc(t_redir *redir, t_block *block)
 void	open_redirection_stdin(t_redir *redir, t_block *block)
 {
 	int		fd;
-	int		pipe_fd[2];
-	char	*buf;
 
 	if (redir->type == 1)
 	{
