@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 20:08:45 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 01:17:56 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 17:35:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_envp(t_list	*envp)
 int	builtin_env(t_block *block)
 {
 	int		i;
-	
+
 	i = 0;
 	if (block->argc != 1)
 		return (1);

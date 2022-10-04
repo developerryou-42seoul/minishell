@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtin_exit.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/04 17:35:21 by junekim           #+#    #+#             */
+/*   Updated: 2022/10/04 17:36:05 by junekim          ###   ########seoul.kr  */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 static int	check_numeric(t_block *block)
 {
-	char *str;
+	char	*str;
 
 	str = block->argv->next->content;
 	while (*str == '\t' || *str == '\n' || *str == '\v' || *str == '\f'
@@ -21,12 +33,13 @@ static int	check_numeric(t_block *block)
 
 int	check_exit(t_block *block)
 {
-	if (is_same_str(block->argv->content, "exit") && !block->next && !block->prev)
+	if (is_same_str(block->argv->content, "exit") && \
+	!block->next && !block->prev)
 	{
 		if (block->argc > 2)
 		{
 			if (check_numeric(block))
-				return(0);
+				return (0);
 		}
 		printf("exit\n");
 		return (1);
@@ -43,7 +56,7 @@ int	builtin_exit(t_block *block)
 			printf("mini: exit: too many arguments\n");
 			return (1); //종료되면 안됨, 수정필요
 		}
-		else 
+		else
 		{
 			printf("mini: exit: %s: numeric argument required\n", \
 					block->argv->next->content);

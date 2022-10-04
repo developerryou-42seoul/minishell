@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/29 21:25:17 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/04 17:39:10 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 	init_g_data(envp);
 	while (1)
 	{
-	set_terminal(&g_data->t);
+		set_terminal(&g_data->t);
 		info.head = NULL;
 		info.tail = NULL;
 		line = readline("mini-0.0$ ");
