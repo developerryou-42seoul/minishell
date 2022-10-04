@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 19:15:14 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:18:58 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
-
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
@@ -149,5 +148,7 @@ void	child_signal(int signum);
 void	set_signal(void);
 void	set_terminal(struct termios *t);
 void	reset_terminal(struct termios *t);
+
+char	*change_dollar(char *line);
 
 #endif

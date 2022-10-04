@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 18:58:34 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/04 21:20:05 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int	parser(char *line, t_block_info *info)
 				error("parser");
 		}
 	}
-//	print_info(info);
+	print_info(info);
 	return (0);
 }
