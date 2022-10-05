@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 21:18:58 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/05 21:15:49 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	error(char *str);
 int		error_cnf(char *str, char *exec);
 int		error_cd(char *str, char *name);
 int		error_export(char *str, char *key);
+int		error_unset(char *str, char *arg);
 
 char	**list_to_charptrptr(t_list *list);
 char	**diclist_to_charptrptr(t_list *list);

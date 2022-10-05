@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnam <jnam@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:31:17 by jnam              #+#    #+#             */
-/*   Updated: 2022/10/04 21:31:19 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/05 21:15:24 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,10 @@ int	error_cd(char *str, char *name)
 {
 	printf("mini: cd: %s: %s\n", name, str);
 	return (2);
+}
+
+int	error_unset(char *str, char *arg)
+{
+	printf("mini: unset: '%s': %s\n", arg, str);
+	return (1);
 }
