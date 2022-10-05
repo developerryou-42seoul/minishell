@@ -48,7 +48,7 @@ int	builtin_echo(t_block *block)
 		curr = curr->next;
 	while (curr)
 	{
-		printf("%s", curr->content);
+		printf("%s", (char *)curr->content);
 		if (curr->next)
 			printf(" ");
 		curr = curr->next;

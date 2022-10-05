@@ -27,9 +27,6 @@ void	print_envp(t_list	*envp)
 
 int	builtin_env(t_block *block)
 {
-	int		i;
-
-	i = 0;
 	if (block->argc != 1)
 		return (1);
 	print_envp(g_data->envp);
