@@ -27,7 +27,7 @@ int	error_export(char *str, char *key)
 int	error_cnf(char *str, char *exec)
 {	
 	printf("mini: %s: %s\n", exec, str);
-	return (127);
+	exit(127);
 }
 
 int	error_cd(char *str, char *name)
