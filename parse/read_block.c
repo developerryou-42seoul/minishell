@@ -6,43 +6,14 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 15:21:20 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 15:53:10 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	check_dollar(t_block *block, char **line, char **str, char **env)
-{
-	if (is_dollar(block, **line))
-	{
-		if (**env)
-			*str = mini_join_str(*str, find_env(*env, g_data->envp, 1));
-		block->dollar = is_dollar(block, **line);
-		if (block->dollar)
-			free(*env);
-		create_empty(&(*env));
-		*env = mini_join(*env, '$');
-		(*line)++;
-		return (1);
-	}
-	return (0);
-}
-
-int	is_dollar(t_block *block, char ch)
-{
-	if (block->quote[0])
-		return (0);
-	else if (ch == '$')
-		return (1);
-	return (0);
-}
-
 static void	read_one_char(t_block *block, char **line, char **str)
 {
-	char	*env;
-
-	create_empty(&env);
 	block->dollar = 0;
 	while (is_esr(block, line))
 	{
@@ -51,19 +22,11 @@ static void	read_one_char(t_block *block, char **line, char **str)
 			(*line)++;
 			continue ;
 		}
-		if (check_dollar(block, line, str, &env))
-			continue ;
-		if (block->dollar)
-			env = mini_join(env, **line);
-		else
-			*str = mini_join(*str, **line);
-		if (!(*str) || !env)
+		*str = mini_join(*str, **line);
+		if (!(*str))
 			error("read_one_char");
 		(*line)++;
 	}
-	if (*env)
-		*str = mini_join_str(*str, find_env(env, g_data->envp, 1));
-	free(env);
 }
 
 void	read_redir(int type, char **line, t_block *block)

@@ -6,11 +6,20 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:45:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 15:45:28 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 15:53:26 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static int	is_dollar(t_block *block, char ch)
+{
+	if (block->quote[0])
+		return (0);
+	else if (ch == '$')
+		return (1);
+	return (0);
+}
 
 static int	is_finish_dollar(char ch)
 {
