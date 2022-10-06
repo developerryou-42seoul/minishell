@@ -157,5 +157,5 @@ void		set_terminal(struct termios *t);
 void		reset_terminal(struct termios *t);
 
 char		*change_dollar(char *line);
-
+void		redir_terminal(struct termios *t);
 #endif

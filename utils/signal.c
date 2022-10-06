@@ -49,3 +49,12 @@ void	reset_terminal(struct termios *t)
 	t->c_lflag |= ECHOCTL;
 	tcsetattr(STDIN_FILENO, TCSANOW, t);
 }
+
+void	redir_terminal(struct termios *t)
+{
+	signal(SIGINT, SIG_DFL);
+	siganl(SIGQUIT, SIG_IGN);
+	tcgetattr(STDIN_FILENO, t);
+	t->c_lflag &= ~(ECHOCTL);
+	tcsetattr(STDIN_FILENO, TCSANOW, t);
+}

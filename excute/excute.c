@@ -16,6 +16,7 @@ void	children_heredoc(t_redir *redir, int pipe_fd[])
 {
 	char	*buf;
 
+	redir_terminal(&g_data->t);
 	close(pipe_fd[0]);
 	while (1)
 	{
