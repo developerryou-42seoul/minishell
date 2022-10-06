@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:35:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 20:28:28 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 17:00:25 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	builtin_exit(t_block *block)
 			return (1);
 		}
 		printf("mini: exit: %s: numeric argument required\n", \
-				(char*)block->argv->next->content);
+			(char *)block->argv->next->content);
 		exit(255);
 	}
 	else if (block->argc == 2)
@@ -63,7 +63,7 @@ int	builtin_exit(t_block *block)
 		if (!check_numeric(block))
 		{
 			printf("mini: exit: %s: numeric argument required\n", \
-					(char*)block->argv->next->content);
+				(char *)block->argv->next->content);
 			exit(255);
 		}
 		exit (ft_atoi(block->argv->next->content));
