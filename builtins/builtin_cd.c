@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:17:41 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 16:50:12 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:43:57 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	builtin_cd(t_block *block)
 		if (home_cd(home, block))
 			return (home_cd(home, block));
 	}
-	else if (chdir(block->argv->next->content))
+	else if (chdir((char *)block->argv->next->content))
 		return (error_cd(strerror(errno), block->argv->next->content));
 	dir = getcwd(NULL, 0);
 	export_env(ft_strjoin("PWD=", dir), ft_strjoin("OLDPWD=", pwd));
