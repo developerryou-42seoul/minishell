@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/10/06 20:50:13 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:54:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ char	*find_env(char *env, t_list *envp, int flag)
 	{
 		if (g_data->past_return_charptr != 0)
 			free(g_data->past_return_charptr);
-		g_data->past_return_charptr = ft_itoa(g_data->past_return);
+		g_data->past_return_charptr = mini_join_str(ft_itoa(\
+		g_data->past_return), &env[2]);
 		return (g_data->past_return_charptr);
 	}
 	while (envp)
