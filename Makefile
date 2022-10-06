@@ -18,6 +18,7 @@ SRCS = main.c \
 		parse/read_block.c \
 		parse/change_dollar.c \
 		excute/excute.c \
+		excute/redirection.c \
 		excute/process.c \
 		excute/path.c \
 		excute/stdinout.c \

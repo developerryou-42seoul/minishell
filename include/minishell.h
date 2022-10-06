@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 21:15:36 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 21:28:24 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int			is_esr(t_block *block, char **line);
 int			is_valid_key(char *key);
 
 void		excute(t_block_info *info);
+void		make_redirection(t_block *block);
 void		runprocess(t_block *block);
 
 int			check_builtins_before_fork(t_block *block);

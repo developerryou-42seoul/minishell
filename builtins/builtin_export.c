@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:36:16 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 21:21:21 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 21:26:53 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,22 @@ void	sort(char **key_arr, int len)
 {
 	int	idx;
 	int	j;
-	
+
 	idx = 1;
 	while (idx < len)
 	{
 		j = idx;
 		while (j > 0)
 		{
-			if (ft_strncmp(key_arr[j - 1], key_arr[j], ft_strlen(key_arr[j])) > 0)
+			if (ft_strncmp(key_arr[j - 1], key_arr[j], \
+				ft_strlen(key_arr[j])) > 0)
 				swap(&key_arr[j - 1], &key_arr[j]);
 			j--;
 		}
 		idx++;
 	}
 }
+
 char	**make_key_arr(t_list *envp)
 {
 	int		len;
@@ -82,19 +84,17 @@ void	print_export(t_list *envp)
 	idx = 0;
 	while (idx < ft_lstsize(envp))
 	{
-		ft_putstr_fd("declare -x ", STDOUT);
-		ft_putstr_fd(key_arr[idx], STDOUT);
-		ft_putchar_fd('=', STDOUT);
+		printf("declare -x %s=\"", key_arr[idx]);
 		env = mini_join_dollar(key_arr[idx++]);
 		value = find_env(env, envp, 1);
 		while (*value)
 		{
 			if (*value == '$')
-				ft_putchar_fd('\\', STDOUT);
-			ft_putchar_fd(*value, STDOUT);
+				printf("\\");
+			printf("%c", *value);
 			value++;
 		}
-		ft_putchar_fd('\n', STDOUT);
+		printf("\"\n");
 		free(env);
 	}
 	free(key_arr);
