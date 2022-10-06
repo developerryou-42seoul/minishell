@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:30:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/03 01:56:56 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 17:20:20 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	*find_exec(char *exec)
 				return (ret);
 			idx++;
 		}
-		g_data->past_return =  error_cnf("command not found", exec);
+		g_data->past_return = error_cnf("command not found", exec);
 	}
 	return (exec);
 }
