@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:34:30 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/03 01:06:59 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 20:59:11 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,13 @@ long long	ft_atol(const char *str)
 	}
 	check_longlong(sign, res, str, count);
 	return (res * sign);
+}
+
+void	swap(char **str1, char **str2)
+{
+	char	*temp;
+
+	temp = *str1;
+	*str1 = *str2;
+	*str2 = temp;
 }

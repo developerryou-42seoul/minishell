@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 18:10:51 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 21:19:03 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ char	*mini_join(char *str, char ch)
 	ret[i++] = ch;
 	ret[i] = '\0';
 	free(str);
+	return (ret);
+}
+
+char	*mini_join_dollar(char *str)
+{
+	int		i;
+	char	*ret;
+
+	i = 0;
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
+	if (!ret)
+		error("malloc error");
+	ret[0] = '$';
+	while (str[i])
+	{
+		ret[i + 1] = str[i];
+		i++;
+	}
+	ret[i + 1] = '\0';
 	return (ret);
 }
 

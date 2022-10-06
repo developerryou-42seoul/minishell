@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 19:59:45 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 21:15:36 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int			error_env(char *str, char *arg);
 char		**list_to_charptrptr(t_list *list);
 char		**diclist_to_charptrptr(t_list *list);
 long long	ft_atol(const char *str);
+void		swap(char **str1, char **str2);
 
 int			parser(char *line, t_block_info *info);
 
@@ -102,6 +103,7 @@ char		*split_key(char *env);
 char		*split_value(char *env);
 
 char		*mini_join(char *str, char ch);
+char		*mini_join_dollar(char *str);
 char		*mini_join_str(char *s1, char *s2);
 void		create_empty(char **str);
 
@@ -118,6 +120,7 @@ int			is_end(t_block *block, char ch);
 int			is_same_str(char *s1, char *s2);
 int			is_redir(t_block *block, char *line);
 int			is_esr(t_block *block, char **line);
+int			is_valid_key(char *key);
 
 void		excute(t_block_info *info);
 void		runprocess(t_block *block);

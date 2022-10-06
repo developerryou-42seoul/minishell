@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 19:55:56 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 19:11:44 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 21:15:25 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,25 @@ int	is_redir(t_block *block, char *line)
 		if (*(line + 1) == '<')
 			return (3);
 		return (1);
+	}
+	return (0);
+}
+
+int	is_valid_key(char *key)
+{
+	int	i;
+
+	i = 1;
+	if (!ft_isalpha(key[0]) && key[0] != '_')
+		return (1);
+	while (key[i])
+	{
+		if (!ft_isalnum(key[i]) && key[i] != '_')
+			return (1);
+		if (key[i] == '\t' || key[i] == '\n' || key[i] == '\v' \
+		|| key[i] == '\f' || key[i] == '\r' || key[i] == ' ')
+			return (1);
+		i++;
 	}
 	return (0);
 }
