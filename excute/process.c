@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:58:13 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/04 20:24:15 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 15:48:34 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 		exit(excute_builtins_after_fork(block));
 	else
 	{
-		execve(find_exec(block->argv->content), \
-			list_to_charptrptr(block->argv), \
-			diclist_to_charptrptr(g_data->envp));
-		//error(strerror(errno));
+		if (block->argv == 0)
+			exit(0);
+		else
+			execve(find_exec(block->argv->content), \
+				list_to_charptrptr(block->argv), \
+				diclist_to_charptrptr(g_data->envp));
+		error(strerror(errno));
 	}
 }
 

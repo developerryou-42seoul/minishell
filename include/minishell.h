@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/05 21:15:49 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/06 15:47:35 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 void	create_empty(char **str);
 
+int		is_dollar(t_block *block, char ch);
 void	read_block(char **line, t_block_info *info);
 
 void	print_info(t_block_info *info);
