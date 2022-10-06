@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 19:11:29 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 18:10:51 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ char	*mini_join(char *str, char ch)
 	i = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!ret)
-	{
-		free(str);
-		return (NULL);
-	}
+		error("malloc error");
 	while (str[i])
 	{
 		ret[i] = str[i];
@@ -45,10 +42,7 @@ char	*mini_join_str(char *s1, char *s2)
 	j = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
-	{
-		free(s1);
-		return (NULL);
-	}
+		error("malloc error");
 	while (s1[i])
 	{
 		ret[i] = s1[i];
