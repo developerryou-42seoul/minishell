@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/10/04 18:12:58 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 19:59:43 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,12 @@
 char	*find_env(char *env, t_list *envp, int flag)
 {
 	if (!ft_strncmp(env, "$?", 2))
-		return (ft_itoa(g_data->past_return));
+	{
+		if (g_data->past_return_charptr != 0)
+			free(g_data->past_return_charptr);
+		g_data->past_return_charptr = ft_itoa(g_data->past_return);
+		return (g_data->past_return_charptr);
+	}
 	while (envp)
 	{
 		if (is_same_str(env + 1, ((t_dic *)envp->content)->key))
