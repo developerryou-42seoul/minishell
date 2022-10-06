@@ -71,91 +71,91 @@ typedef struct s_data
 
 t_data	*g_data;
 
-void	init_g_data(char **envp);
-void	init_block(t_block *block);
+void		init_g_data(char **envp);
+void		init_block(t_block *block);
 
-void	error(char *str);
-int		error_cnf(char *str, char *exec);
-int		error_cd(char *str, char *name);
-int		error_export(char *str, char *key);
-int		error_unset(char *str, char *arg);
+void		error(char *str);
+int			error_cnf(char *str, char *exec);
+int			error_cd(char *str, char *name);
+int			error_export(char *str, char *key);
+int			error_unset(char *str, char *arg);
 
-int		error_env(char *str, char *arg);
+int			error_env(char *str, char *arg);
 
-char	**list_to_charptrptr(t_list *list);
-char	**diclist_to_charptrptr(t_list *list);
+char		**list_to_charptrptr(t_list *list);
+char		**diclist_to_charptrptr(t_list *list);
 long long	ft_atol(const char *str);
 
-int		parser(char *line, t_block_info *info);
+int			parser(char *line, t_block_info *info);
 
-void	add_block(t_block_info *info, t_block *block);
-void	add_stdin(t_block *block, int fd);
-void	add_stdout(t_block *block, int fd);
-void	add_argv(t_block *block, char *str);
-void	add_redir(t_block *block, int type, char *str);
-void	add_envp(char *key, char *value);
+void		add_block(t_block_info *info, t_block *block);
+void		add_stdin(t_block *block, int fd);
+void		add_stdout(t_block *block, int fd);
+void		add_argv(t_block *block, char *str);
+void		add_redir(t_block *block, int type, char *str);
+void		add_envp(char *key, char *value);
 
-t_dic	*make_dic(char *key, char *value);
-char	*dic_to_charptr(t_dic *dic);
-char	*split_key(char *env);
-char	*split_value(char *env);
+t_dic		*make_dic(char *key, char *value);
+char		*dic_to_charptr(t_dic *dic);
+char		*split_key(char *env);
+char		*split_value(char *env);
 
-char	*mini_join(char *str, char ch);
-char	*mini_join_str(char *s1, char *s2);
-void	create_empty(char **str);
+char		*mini_join(char *str, char ch);
+char		*mini_join_str(char *s1, char *s2);
+void		create_empty(char **str);
 
-void	read_block(char **line, t_block_info *info);
+void		read_block(char **line, t_block_info *info);
 
-void	print_info(t_block_info *info);
-void	print_block(t_block *block);
+void		print_info(t_block_info *info);
+void		print_block(t_block *block);
 
-int		quote(t_block *block, char ch);
-int		is_in_quote(t_block *block);
+int			quote(t_block *block, char ch);
+int			is_in_quote(t_block *block);
 
-int		is_space(t_block *block, char ch);
-int		is_end(t_block *block, char ch);
-int		is_same_str(char *s1, char *s2);
-int		is_redir(t_block *block, char *line);
-int		is_esr(t_block *block, char **line);
+int			is_space(t_block *block, char ch);
+int			is_end(t_block *block, char ch);
+int			is_same_str(char *s1, char *s2);
+int			is_redir(t_block *block, char *line);
+int			is_esr(t_block *block, char **line);
 
-void	excute(t_block_info *info);
-void	runprocess(t_block *block);
+void		excute(t_block_info *info);
+void		runprocess(t_block *block);
 
-int		check_builtins_before_fork(t_block *block);
-int		excute_builtins_before_fork(t_block *block);
-int		check_builtins_after_fork(t_block *block);
-int		excute_builtins_after_fork(t_block *block);
+int			check_builtins_before_fork(t_block *block);
+int			excute_builtins_before_fork(t_block *block);
+int			check_builtins_after_fork(t_block *block);
+int			excute_builtins_after_fork(t_block *block);
 
-int		builtin_echo(t_block *block);
-int		builtin_cd(t_block *block);
-int		builtin_pwd(t_block *block);
-int		builtin_unset(t_block *block);
-int		push_argv_to_envp(t_list *argv);
-int		builtin_export(t_block *block);
-int		builtin_env(t_block *block);
-void	print_envp(t_list *envp);
-int		builtin_exit(t_block *block);
-int		check_exit(t_block *block);
+int			builtin_echo(t_block *block);
+int			builtin_cd(t_block *block);
+int			builtin_pwd(t_block *block);
+int			builtin_unset(t_block *block);
+int			push_argv_to_envp(t_list *argv);
+int			builtin_export(t_block *block);
+int			builtin_env(t_block *block);
+void		print_envp(t_list *envp);
+int			builtin_exit(t_block *block);
+int			check_exit(t_block *block);
 
-char	*find_exec(char *exec);
+char		*find_exec(char *exec);
 
-void	pipe_init(t_block_info *info);
-void	pipe_restore(t_block_info *info);
+void		pipe_init(t_block_info *info);
+void		pipe_restore(t_block_info *info);
 
-void	stdin_manage(int fd_stdin, t_list *list_stdin);
-void	stdout_manage(int fd_stdout, t_list *list_stdout);
+void		stdin_manage(int fd_stdin, t_list *list_stdin);
+void		stdout_manage(int fd_stdout, t_list *list_stdout);
 
-char	*find_env(char *env, t_list *envp, int flag);
-int		change_env(t_list *envp, char *key, char *value);
+char		*find_env(char *env, t_list *envp, int flag);
+int			change_env(t_list *envp, char *key, char *value);
 
-void	free_info(t_block_info *info);
+void		free_info(t_block_info *info);
 
-void	parent_signal(int signum);
-void	child_signal(int signum);
-void	set_signal(void);
-void	set_terminal(struct termios *t);
-void	reset_terminal(struct termios *t);
+void		parent_signal(int signum);
+void		child_signal(int signum);
+void		set_signal(void);
+void		set_terminal(struct termios *t);
+void		reset_terminal(struct termios *t);
 
-char	*change_dollar(char *line);
+char		*change_dollar(char *line);
 
 #endif
