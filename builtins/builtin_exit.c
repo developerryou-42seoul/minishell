@@ -66,7 +66,7 @@ int	builtin_exit(t_block *block)
 					(char*)block->argv->next->content);
 			exit(255);
 		}
-		exit (ft_atoi(block->argv->next->content));
+		exit (ft_atol(block->argv->next->content));
 	}
 	else
 		exit(0);

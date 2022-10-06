@@ -28,7 +28,8 @@ void	print_envp(t_list	*envp)
 int	builtin_env(t_block *block)
 {
 	if (block->argc != 1)
-		return (1);
+		return (error_env("not a valid identifier", \
+		block->argv->next->content));
 	print_envp(g_data->envp);
 	return (0);
 }
