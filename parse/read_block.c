@@ -6,20 +6,11 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 21:19:16 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 15:21:20 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static int	is_dollar(t_block *block, char ch)
-{
-	if (block->quote[0])
-		return (0);
-	else if (ch == '$')
-		return (1);
-	return (0);
-}
 
 static int	check_dollar(t_block *block, char **line, char **str, char **env)
 {
@@ -35,6 +26,15 @@ static int	check_dollar(t_block *block, char **line, char **str, char **env)
 		(*line)++;
 		return (1);
 	}
+	return (0);
+}
+
+int	is_dollar(t_block *block, char ch)
+{
+	if (block->quote[0])
+		return (0);
+	else if (ch == '$')
+		return (1);
 	return (0);
 }
 

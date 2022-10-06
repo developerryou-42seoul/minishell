@@ -16,7 +16,7 @@ SRCS = main.c \
 		parse/parser.c \
 		parse/expand.c \
 		parse/read_block.c \
-		parse/chage_dollar.c \
+		parse/change_dollar.c \
 		excute/excute.c \
 		excute/process.c \
 		excute/path.c \

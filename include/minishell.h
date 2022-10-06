@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 21:18:58 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 15:21:58 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ char	*mini_join(char *str, char ch);
 char	*mini_join_str(char *s1, char *s2);
 void	create_empty(char **str);
 
+int		is_dollar(t_block *block, char ch);
 void	read_block(char **line, t_block_info *info);
 
 void	print_info(t_block_info *info);
