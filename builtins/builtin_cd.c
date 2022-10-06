@@ -36,12 +36,12 @@ static int	home_cd(char *home, t_block *block)
 	return (0);
 }
 
-static int	init_cd(t_block *block, char **pwd, char **home)
+static int	init_cd(char **pwd, char **home)
 {
-	if (block->argc > 2)
-		return (1);
 	*pwd = find_env("$PWD", g_data->envp, 0);
 	*home = find_env("$HOME", g_data->envp, 0);
+	if (!(*home))
+		printf("mini: cd: HOME not set\n");
 	if (!(*pwd) || !(*home))
 		return (1);
 	return (0);
@@ -53,7 +53,7 @@ int	builtin_cd(t_block *block)
 	char	*pwd;
 	char	*home;
 
-	if (init_cd(block, &pwd, &home))
+	if (init_cd(&pwd, &home))
 		return (1);
 	if (block->argc == 1)
 	{
