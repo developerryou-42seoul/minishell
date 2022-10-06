@@ -48,12 +48,10 @@ void	open_redirection_heredoc(t_redir *redir, t_block *block)
 	if (pid == -1)
 		error(strerror(errno));
 	else if (pid == 0)
-	{
-		signal(SIGINT, SIG_DFL);	
 		children_heredoc(redir, pipe_fd);
-	}
 	else
 	{
+		signal(SIGQUIT, SIG_IGN);
 		wait(0);
 		close(pipe_fd[1]);
 		add_stdin(block, pipe_fd[0]);
