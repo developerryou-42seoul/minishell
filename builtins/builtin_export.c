@@ -12,15 +12,17 @@
 
 #include "minishell.h"
 
-int	is_space_key(char *key)
+int	is_valid_key(char *key)
 {
 	int	i;
 
 	i = 1;
-	if (!ft_isalpha(key[0]))
+	if (!ft_isalpha(key[0]) && key[0] != '_')
 		return (1);
 	while (key[i])
 	{
+		if (!ft_isalnum(key[i]) && key[i] != '_')
+			return (1);
 		if (key[i] == '\t' || key[i] == '\n' || key[i] == '\v' \
 		|| key[i] == '\f' || key[i] == '\r' || key[i] == ' ')
 			return (1);
@@ -37,8 +39,10 @@ int	push_argv_to_envp(t_list *argv)
 	while (argv)
 	{
 		key = split_key(argv->content);
-		if (is_space_key(key))
-			return (error_export("not a valid identifier", key));
+		if (!key)
+			return (0);
+		if (is_valid_key(key))
+			return (error_export("not a valid identifier", argv->content));
 		value = split_value(argv->content);
 		if (key != 0 && value != 0)
 		{
