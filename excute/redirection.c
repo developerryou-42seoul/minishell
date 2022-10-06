@@ -43,10 +43,10 @@ void	open_redirection_heredoc(t_redir *redir, t_block *block)
 	int		pipe_fd[2];
 
 	if (pipe(pipe_fd) < 0)
-		printf(strerror(errno));
+		printf("mini: %s: %s\n", redir->string, strerror(errno));
 	pid = fork();
 	if (pid == -1)
-		printf(strerror(errno));
+		printf("mini: %s: %s\n", redir->string, strerror(errno));
 	else if (pid == 0)
 		children_heredoc(redir, pipe_fd);
 	else
@@ -66,7 +66,7 @@ void	open_redirection_stdin(t_redir *redir, t_block *block)
 	{
 		fd = open(redir->string, O_RDONLY);
 		if (fd == -1)
-			printf(strerror(errno));
+			printf("mini: %s: %s\n", redir->string, strerror(errno));
 		add_stdin(block, fd);
 	}
 	else if (redir->type == 3)
@@ -81,14 +81,14 @@ void	open_redirection_stdout(t_redir *redir, t_block *block)
 	{
 		fd = open(redir->string, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (fd == -1)
-			printf(strerror(errno));
+			printf("mini: %s: %s\n", redir->string, strerror(errno));
 		add_stdout(block, fd);
 	}
 	else if (redir->type == 4)
 	{
 		fd = open(redir->string, O_WRONLY | O_CREAT | O_APPEND, 0777);
 		if (fd == -1)
-			printf(strerror(errno));
+			printf("mini: %s: %s\n", redir->string, strerror(errno));
 		add_stdout(block, fd);
 	}
 }
