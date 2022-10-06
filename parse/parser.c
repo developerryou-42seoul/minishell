@@ -58,7 +58,10 @@ int	parser(char *line, t_block_info *info)
 		{
 			line ++;
 			if (*line == '|' || *line == '\0')
+			{
+				printf("mini: syntax error near unexpected token `|'\n");
 				return (1);
+			}
 		}
 	}
 	return (0);
