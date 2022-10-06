@@ -14,6 +14,8 @@
 
 char	*find_env(char *env, t_list *envp, int flag)
 {
+	if (!ft_strncmp(env, "$", 1))
+		return ("$");
 	if (!ft_strncmp(env, "$?", 2))
 	{
 		if (g_data->past_return_charptr != 0)
