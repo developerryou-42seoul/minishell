@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 14:52:14 by jonglee           #+#    #+#             */
-/*   Updated: 2022/10/06 19:59:43 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 20:23:52 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*find_env(char *env, t_list *envp, int flag)
 {
-	if (!ft_strncmp(env, "$", 1))
+	if (is_same_str(env, "$"))
 		return ("$");
 	if (!ft_strncmp(env, "$?", 2))
 	{
