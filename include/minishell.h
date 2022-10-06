@@ -80,6 +80,8 @@ int		error_cd(char *str, char *name);
 int		error_export(char *str, char *key);
 int		error_unset(char *str, char *arg);
 
+int		error_env(char *str, char *arg);
+
 char	**list_to_charptrptr(t_list *list);
 char	**diclist_to_charptrptr(t_list *list);
 
