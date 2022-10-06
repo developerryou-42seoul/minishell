@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:40:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 21:25:23 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 20:55:28 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	input_line(char *line, t_block_info *info)
 		add_history(line);
 	reset_terminal(&g_data->t);
 	chaged_line = change_dollar(line);
-	printf("%s\n", chaged_line);
-	parser(chaged_line, info);
+	if (parser(chaged_line, info))
+		return ;
 	excute(info);
 	chdir(find_env("$PWD", g_data->envp, 1));
 	free(chaged_line);

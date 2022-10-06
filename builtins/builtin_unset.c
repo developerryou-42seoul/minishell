@@ -64,6 +64,8 @@ int	builtin_unset(t_block *block)
 
 	i = 1;
 	arg = block->argv->next;
+	if (block->prev)
+		return (0);
 	while (i < block->argc)
 	{
 		if (is_invalid_arg(arg))

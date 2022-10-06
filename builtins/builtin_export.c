@@ -102,6 +102,8 @@ void	print_export(t_list *envp)
 
 int	builtin_export(t_block *block)
 {
+	if (block->prev)
+		return (0);
 	if (block->argv->next == 0)
 		print_export(g_data->envp);
 	else

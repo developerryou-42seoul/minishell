@@ -29,7 +29,7 @@ static void	read_one_char(t_block *block, char **line, char **str)
 	}
 }
 
-void	read_redir(int type, char **line, t_block *block)
+int	read_redir(int type, char **line, t_block *block)
 {
 	char	*str_redir;
 
@@ -39,13 +39,17 @@ void	read_redir(int type, char **line, t_block *block)
 	while (is_space(block, **line))
 		(*line)++;
 	if (is_redir(block, *line) || is_end(block, **line))
-		error("parser_sub1");
+	{
+		printf("mini: syntax error near unexpected token `newline'\n");
+		return (1);
+	}
 	create_empty(&str_redir);
 	read_one_char(block, line, &str_redir);
 	add_redir(block, type, str_redir);
+	return (0);
 }
 
-void	read_block(char **line, t_block_info *info)
+int	read_block(char **line, t_block_info *info)
 {
 	int		type;
 	t_block	*block;
@@ -54,11 +58,15 @@ void	read_block(char **line, t_block_info *info)
 	block = info->tail;
 	type = is_redir(block, *line);
 	if (type)
-		read_redir(type, line, block);
+	{
+		if (read_redir(type, line, block))
+			return (1);
+	}
 	else
 	{
 		create_empty(&str_argv);
 		read_one_char(block, line, &str_argv);
 		add_argv(block, str_argv);
 	}
+	return (0);
 }
