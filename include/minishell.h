@@ -105,7 +105,7 @@ char		*mini_join(char *str, char ch);
 char		*mini_join_str(char *s1, char *s2);
 void		create_empty(char **str);
 
-void		read_block(char **line, t_block_info *info);
+int			read_block(char **line, t_block_info *info);
 
 void		print_info(t_block_info *info);
 void		print_block(t_block *block);

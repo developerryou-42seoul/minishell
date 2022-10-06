@@ -27,9 +27,13 @@ char	*parser_sub(char *line, t_block_info *info)
 		}
 		while (!is_end(block, *line) && !is_space(block, *line))
 		{
-			read_block(&line, info);
+			if (read_block(&line, info))
+				return (NULL);
 			if (is_in_quote(block))
-				error("parser_sub2");
+			{
+				printf("quote error\n");
+				return (NULL);
+			}
 		}
 	}
 	return (line);
@@ -45,16 +49,17 @@ int	parser(char *line, t_block_info *info)
 		if (*line == '|')
 		{
 			printf("mini: syntax error near unexpected token `|'\n");
-			return (0);
+			return (1);
 		}
 		line = parser_sub(line, info);
+		if (!line)
+			return (1);
 		if (*line == '|')
 		{
 			line ++;
 			if (*line == '|' || *line == '\0')
-				error("parser");
+				return (1);
 		}
 	}
-	print_info(info);
 	return (0);
 }

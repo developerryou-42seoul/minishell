@@ -20,7 +20,8 @@ void	input_line(char *line, t_block_info *info)
 		add_history(line);
 	reset_terminal(&g_data->t);
 	chaged_line = change_dollar(line);
-	parser(chaged_line, info);
+	if (parser(chaged_line, info))
+		return ;
 	excute(info);
 	chdir(find_env("$PWD", g_data->envp, 1));
 	free(chaged_line);
