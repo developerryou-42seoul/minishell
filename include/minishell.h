@@ -84,6 +84,7 @@ int		error_env(char *str, char *arg);
 
 char	**list_to_charptrptr(t_list *list);
 char	**diclist_to_charptrptr(t_list *list);
+long long	ft_atol(const char *str);
 
 int		parser(char *line, t_block_info *info);
 
