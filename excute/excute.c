@@ -6,22 +6,20 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:25:07 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/04 18:19:32 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/06 19:17:15 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	open_redirection_heredoc(t_redir *redir, t_block *block)
+void	children_heredoc(t_redir *redir, int pipe_fd[])
 {
-	int		pipe_fd[2];
 	char	*buf;
 
-	if (pipe(pipe_fd) < 0)
-		error(strerror(errno));
+	close(pipe_fd[0]);
 	while (1)
 	{
-		ft_putstr_fd("heredoc> ", STDOUT);
+		ft_putstr_fd("> ", STDOUT);
 		buf = get_next_line(STDIN);
 		if (buf == 0)
 			break ;
@@ -35,7 +33,30 @@ void	open_redirection_heredoc(t_redir *redir, t_block *block)
 		ft_putstr_fd(buf, pipe_fd[1]);
 		free(buf);
 	}
-	add_stdin(block, pipe_fd[0]);
+	exit(1);
+}
+
+void	open_redirection_heredoc(t_redir *redir, t_block *block)
+{
+	pid_t	pid;
+	int		pipe_fd[2];
+
+	if (pipe(pipe_fd) < 0)
+		error(strerror(errno));
+	pid = fork();
+	if (pid == -1)
+		error(strerror(errno));
+	else if (pid == 0)
+	{
+		signal(SIGINT, SIG_DFL);	
+		children_heredoc(redir, pipe_fd);
+	}
+	else
+	{
+		wait(0);
+		close(pipe_fd[1]);
+		add_stdin(block, pipe_fd[0]);
+	}
 }
 
 void	open_redirection_stdin(t_redir *redir, t_block *block)
