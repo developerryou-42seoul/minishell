@@ -55,7 +55,7 @@ int	builtin_exit(t_block *block)
 			return (1);
 		}
 		printf("mini: exit: %s: numeric argument required\n", \
-				(char*)block->argv->next->content);
+				(char *)block->argv->next->content);
 		exit(255);
 	}
 	else if (block->argc == 2)
@@ -63,7 +63,7 @@ int	builtin_exit(t_block *block)
 		if (!check_numeric(block))
 		{
 			printf("mini: exit: %s: numeric argument required\n", \
-					(char*)block->argv->next->content);
+					(char *)block->argv->next->content);
 			exit(255);
 		}
 		exit (ft_atol(block->argv->next->content));
