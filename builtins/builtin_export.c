@@ -56,6 +56,8 @@ int	push_argv_to_envp(t_list *argv)
 
 int	builtin_export(t_block *block)
 {
+	if (block->prev)
+		return (0);
 	if (block->argv->next == 0)
 		print_envp(g_data->envp);
 	else
