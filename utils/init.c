@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 09:07:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 17:38:08 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/06 19:57:10 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	init_g_data(char **envp)
 	g_data = malloc(sizeof(t_data));
 	init_list_envp(envp);
 	g_data->past_return = 0;
+	g_data->past_return_charptr = 0;
 }
 
 void	init_block(t_block *block)
