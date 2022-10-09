@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:17:41 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 20:43:57 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/09 22:16:37 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	home_cd(char *home, t_block *block)
 
 	dir = ft_strjoin(home, (char *)(block->argv->next->content) + 1);
 	if (chdir(dir))
-		return (error_cd(strerror(errno), block->argv->next->content));
+		return (1);
 	free(dir);
 	return (0);
 }
@@ -63,7 +63,7 @@ int	builtin_cd(t_block *block)
 	else if (*((char *)(block->argv->next->content)) == '~')
 	{
 		if (home_cd(home, block))
-			return (home_cd(home, block));
+			return (error_cd(strerror(errno), block->argv->next->content));
 	}
 	else if (chdir((char *)block->argv->next->content))
 		return (error_cd(strerror(errno), block->argv->next->content));
