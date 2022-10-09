@@ -44,7 +44,7 @@ int	main(int argc, char **argv, char **envp)
 		else
 		{
 			printf("exit\n");
-			exit(1);
+			exit(0);
 		}
 		free(line);
 		free_info(&info);
