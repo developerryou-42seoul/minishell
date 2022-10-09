@@ -55,3 +55,21 @@ void	stdout_manage(int fd_stdout, t_list *list_stdout)
 		list_stdout = list_stdout->next;
 	}
 }
+
+void	stdin_close(t_list *list_stdin)
+{
+	while (list_stdin)
+	{
+		close(*(int *)(list_stdin->content));
+		list_stdin = list_stdin->next;
+	}
+}
+
+void	stdout_close(t_list *list_stdout)
+{
+	while (list_stdout)
+	{
+		close(*(int *)(list_stdout->content));
+		list_stdout = list_stdout->next;
+	}
+}

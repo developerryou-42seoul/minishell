@@ -149,6 +149,8 @@ void		pipe_restore(t_block_info *info);
 
 void		stdin_manage(int fd_stdin, t_list *list_stdin);
 void		stdout_manage(int fd_stdout, t_list *list_stdout);
+void		stdin_close(t_list *list_stdin);
+void		stdout_close(t_list *list_stdout);
 
 char		*find_env(char *env, t_list *envp, int flag);
 int			change_env(t_list *envp, char *key, char *value);

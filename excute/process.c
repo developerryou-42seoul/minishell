@@ -41,12 +41,8 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
 	int	status;
-
-	if (block->list_stdin != NULL)
-	{
-		close(pipe_input[0]);
-		stdin_manage(pipe_input[1], block->list_stdin);
-	}
+	
+	close(pipe_input[0]);
 	if (wait(&status) == -1)
 		g_data->past_return = 1;
 	if (check_exit(block))
@@ -55,11 +51,7 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 		g_data->past_return = status / 256;
 	else
 		g_data->past_return = 0;
-	if (block->list_stdout != NULL)
-	{
-		close(pipe_output[1]);
-		stdout_manage(pipe_output[0], block->list_stdout);
-	}
+	close(pipe_output[1]);
 }
 
 void	runprocess(t_block *block)
@@ -70,6 +62,8 @@ void	runprocess(t_block *block)
 
 	if (pipe(pipe_input) < 0 || pipe(pipe_output) < 0)
 		error(strerror(errno));
+	if (block->list_stdin != NULL)
+		stdin_manage(pipe_input[1], block->list_stdin);
 	pid = fork();
 	if (pid == -1)
 		error(strerror(errno));
@@ -77,4 +71,6 @@ void	runprocess(t_block *block)
 		childprocess(pipe_input, pipe_output, block);
 	else
 		parentprocess(pipe_input, pipe_output, block);
+	if (block->list_stdout != NULL)
+		stdout_manage(pipe_output[0], block->list_stdout);
 }

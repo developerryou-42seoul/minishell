@@ -73,17 +73,23 @@ int	check_builtins_before_fork(t_block *block)
 
 int	excute_builtins_before_fork(t_block *block)
 {
+	int		ret;
 	char	*exec;
-
+	
+	if (block->list_stdin != NULL)
+		stdin_close(block->list_stdin);
 	if (block->argv == 0)
 		return (g_data->past_return);
 	exec = block->argv->content;
 	if (is_same_str(exec, "export") && block->argv->next != 0)
-		return (builtin_export(block));
+		ret = builtin_export(block);
 	else if (is_same_str(exec, "unset"))
-		return (builtin_unset(block));
+		ret = builtin_unset(block);
 	else if (is_same_str(exec, "cd"))
-		return (builtin_cd(block));
+		ret = builtin_cd(block);
 	else
 		return (g_data->past_return);
+	if (block->list_stdout != NULL)
+		stdout_close(block->list_stdout);
+	return (ret);
 }
