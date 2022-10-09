@@ -14,7 +14,6 @@
 
 void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
-	reset_terminal(&g_data->t);
 	if (block->list_stdin != NULL)
 	{
 		close(pipe_input[1]);
