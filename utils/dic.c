@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dic.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:16:31 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/03 01:56:34 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/09 22:25:33 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ char	*split_key(char *env)
 	idx = 0;
 	while (env[idx] != '=' && env[idx] != '\0')
 		idx++;
-	if (idx == 0)
-		error("not a valid identifier");
 	if (ft_strlen(env) == idx)
 		return (0);
 	ret = malloc(sizeof(char) * (idx + 1));
