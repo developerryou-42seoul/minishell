@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-
 int	check_exit(t_block *block)
 {
 	if (block->argv != 0 && \
@@ -32,18 +30,25 @@ int	check_exit(t_block *block)
 	return (0);
 }
 
-void	print_exit(char *str, t_block *block, int flag)
+void	print_exit_error(char *str, t_block *block, int flag)
 {
 	if (!block->next && !block->prev)
-		printf("exit\n");
+		ft_putstr_fd("exit\n", 2);
 	if (flag == 1)
 	{
-		printf("mini: exit: %s: %s\n", \
-			(char *)block->argv->next->content, str);
+		ft_putstr_fd("mini: exit: ",2 );
+		ft_putstr_fd((char *)block->argv->next->content, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\n", 2);
 		exit(255);
 	}
 	else
-		printf("mini: exit: %s\n", str);
+	{
+		ft_putstr_fd("mini: exit: ",2);
+		ft_putstr_fd(str, 2);
+		ft_putstr_fd("\n", 2);
+	}
 }
 
 int	builtin_exit(t_block *block)
@@ -58,15 +63,15 @@ int	builtin_exit(t_block *block)
 			exit(ft_atol((char *)block->argv->next->content));
 		}
 		else
-			print_exit("numeric argument required", block, 1);
+			print_exit_error("numeric argument required", block, 1);
 	}
 	else if (block->argc > 2)
 	{
 		if (check_numeric(block) && \
 			check_atol((char *)block->argv->next->content))
-			print_exit("too many arguments", block, 0);
+			print_exit_error("too many arguments", block, 0);
 		else
-			print_exit("numeric argument required", block, 1);
+			print_exit_error("numeric argument required", block, 1);
 		return (1);
 	}
 	if (!block->next && !block->prev)
