@@ -54,53 +54,6 @@ char	**list_to_charptrptr(t_list *list)
 	return (ret);
 }
 
-void	check_longlong(long long sign, unsigned long long res, \
-					const char *str, int count)
-{
-	if (count > 19)
-	{
-		printf("mini: exit: %s: numeric argument required\n", str);
-		exit(255);
-	}	
-	if (sign == 1 && res > 9223372036854775807L)
-	{
-		printf("mini: exit: %s: numeric argument required\n", str);
-		exit(255);
-	}
-	else if (sign == -1 && res > 9223372036854775808ULL)
-	{
-		printf("mini: exit: %s: numeric argument required\n", str);
-		exit(255);
-	}
-}
-
-long long	ft_atol(const char *str)
-{
-	unsigned long long	res;
-	long long			sign;
-	int					count;
-
-	while ((9 <= *str && *str <= 13) || *str == ' ')
-		str++;
-	sign = 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	res = 0;
-	count = 0;
-	while (ft_isdigit(*str))
-	{
-		res = res * 10 + (*str - '0');
-		str++;
-		count++;
-	}
-	check_longlong(sign, res, str, count);
-	return (res * sign);
-}
-
 void	swap(char **str1, char **str2)
 {
 	char	*temp;

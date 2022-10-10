@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/09 22:11:25 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/10 14:08:28 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ int			builtin_env(t_block *block);
 void		print_envp(t_list *envp);
 int			builtin_exit(t_block *block);
 int			check_exit(t_block *block);
+int			parent_exit(t_block *block);
 
 char		*find_exec(char *exec);
 
@@ -165,4 +166,11 @@ void		reset_terminal(struct termios *t);
 
 char		*change_dollar(char *line);
 void		redir_terminal(struct termios *t);
+
+int			check_numeric(t_block *block);
+int			check_longlong(long long sign, \
+				unsigned long long res, int count);
+int			check_atol(const char *str);
+long long	ft_atol(const char *str);
+
 #endif

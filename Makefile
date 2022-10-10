@@ -29,6 +29,7 @@ SRCS = main.c \
 		utils/dll.c \
 		utils/dic.c \
 		utils/utils.c \
+		utils/utils2.c \
 		utils/free.c \
 		utils/signal.c \
 		utils/error.c \

@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:48:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 20:11:53 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/10 14:07:04 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	excute_builtins_before_fork(t_block *block)
 {
 	int		ret;
 	char	*exec;
-	
+
 	if (block->list_stdin != NULL)
 		stdin_close(block->list_stdin);
 	if (block->argv == 0)

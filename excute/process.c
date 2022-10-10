@@ -46,7 +46,7 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 	if (wait(&status) == -1)
 		g_data->past_return = 1;
 	if (check_exit(block))
-		exit(excute_builtins_after_fork(block));
+		exit(parent_exit(block));
 	if (status == 2)
 		g_data->past_return = 130;
 	else if (status == 3)
@@ -56,6 +56,7 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 	else
 		g_data->past_return = 0;
 	close(pipe_output[1]);
+	(void)block;
 }
 
 void	runprocess(t_block *block)
