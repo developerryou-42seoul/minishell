@@ -18,5 +18,6 @@ int	error_env(char *str, char *arg)
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	return (127);
 }
