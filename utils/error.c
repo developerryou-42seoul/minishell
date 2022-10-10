@@ -38,7 +38,11 @@ int	error_cnf(char *str, char *exec)
 
 int	error_cd(char *str, char *name)
 {
-	printf("mini: cd: %s: %s\n", name, str);
+	ft_putstr_fd("mini: cd: ", 2);
+	ft_putstr_fd(name, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd("str", 2);
+	ft_putstr_fd("\n", 2);
 	return (2);
 }
 
@@ -48,5 +52,6 @@ int	error_unset(char *str, char *arg)
 	ft_putstr_fd(arg, 2);
 	ft_putstr_fd("': ", 2);
 	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	return (1);
 }
