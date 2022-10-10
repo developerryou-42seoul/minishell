@@ -47,7 +47,11 @@ void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 		g_data->past_return = 1;
 	if (check_exit(block))
 		exit(excute_builtins_after_fork(block));
-	if (status != 0)
+	if (status == 2)
+		g_data->past_return = 130;
+	else if (status == 3)
+		g_data->past_return = 131;
+	else if (status != 0)
 		g_data->past_return = status / 256;
 	else
 		g_data->past_return = 0;
