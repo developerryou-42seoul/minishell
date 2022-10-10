@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/10 14:08:28 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/10/11 02:29:14 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int			error_export(char *str, char *key);
 int			error_unset(char *str, char *arg);
 
 int			error_env(char *str, char *arg);
+void		error_path(char *str, char *exec);
 
 char		**list_to_charptrptr(t_list *list);
 char		**diclist_to_charptrptr(t_list *list);
