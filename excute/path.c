@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:30:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/06 17:20:20 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/10/11 02:35:20 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ char	*find_path(char *path, char *exec)
 
 	temp1 = ft_strjoin(path, "/");
 	if (temp1 == 0)
-		error("execution path join");
+		error(strerror(errno));
 	temp2 = ft_strjoin(temp1, exec);
 	free(temp1);
 	if (temp2 == 0)
-		error("execution path join");
+		error(strerror(errno));
 	fd = open(temp2, O_RDONLY);
 	if (fd >= 0)
 	{
@@ -54,14 +54,14 @@ char	*find_exec(char *exec)
 	char	*ret;
 
 	if (!ft_strlen(exec))
-		error("invalid envp");
+		g_data->past_return = error_cnf("command not found", exec);
 	if (ft_strncmp(exec, "/", 1) != 0 && \
 	ft_strncmp(exec, "./", 2) != 0 && \
 	ft_strncmp(exec, "../", 3) != 0)
 	{
 		path = split_path();
 		if (path == 0)
-			error("path split");
+			error_path("No such file or directory", exec);
 		idx = 0;
 		while (path[idx] != 0)
 		{
