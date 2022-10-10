@@ -31,7 +31,10 @@ static int	home_cd(char *home, t_block *block)
 
 	dir = ft_strjoin(home, (char *)(block->argv->next->content) + 1);
 	if (chdir(dir))
+	{
+		free(dir);
 		return (1);
+	}
 	free(dir);
 	return (0);
 }
