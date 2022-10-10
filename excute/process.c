@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:58:13 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/06 15:48:34 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/10 12:09:28 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	childprocess(int pipe_input[], int pipe_output[], t_block *block)
 void	parentprocess(int pipe_input[], int pipe_output[], t_block *block)
 {
 	int	status;
-	
+
 	close(pipe_input[0]);
 	if (wait(&status) == -1)
 		g_data->past_return = 1;
