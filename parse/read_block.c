@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_block.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 21:29:40 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/11 02:41:41 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	read_one_char(t_block *block, char **line, char **str)
 		}
 		*str = mini_join(*str, **line);
 		if (!(*str))
-			error("read_one_char");
+			error(strerror(errno));
 		(*line)++;
 	}
 }
