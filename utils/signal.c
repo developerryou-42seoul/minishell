@@ -27,9 +27,15 @@ void	parent_signal(int signum)
 void	child_signal(int signum)
 {
 	if (signum == SIGINT)
+	{
+		g_data->past_return = 130;
 		printf("\n");
+	}
 	if (signum == SIGQUIT)
+	{
+		g_data->past_return = 131;
 		printf("Quit: 3\n");
+	}
 }
 
 void	set_terminal(struct termios *t)
