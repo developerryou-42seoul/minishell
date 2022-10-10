@@ -15,24 +15,27 @@
 int	check_exit(t_block *block)
 {
 	if (block->argv != 0 && \
-		!is_same_str(block->argv->content, "exit"))
-		return (0);
-	if (block->prev || block->next)
-		return (0);
-	if (block->argc == 2)
-		return (1);
-	else if (block->argc > 2)
+		is_same_str(block->argv->content, "exit"))
 	{
-		if (check_numeric(block) && \
-			check_atol((char *)block->argv->next->content))
+		if (block->prev || block->next)
 			return (0);
+		if (block->argc == 2)
+			return (1);
+		else if (block->argc > 2)
+		{
+			if (check_numeric(block) && \
+				check_atol((char *)block->argv->next->content))
+				return (0);
+		}
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 void	print_exit(char *str, t_block *block, int flag)
 {
-	printf("exit\n");
+	if (!block->next && !block->prev)
+		printf("exit\n");
 	if (flag == 1)
 	{
 		printf("mini: exit: %s: %s\n", \
