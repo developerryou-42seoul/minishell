@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:31:17 by jnam              #+#    #+#             */
-/*   Updated: 2022/10/11 02:43:28 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 02:53:17 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	error_export(char *str, char *key)
 	return (1);
 }
 
-int	error_cnf(char *str, char *exec)
+void	error_cnf(char *str, char *exec)
 {	
 	ft_putstr_fd("mini: ", 2);
 	ft_putstr_fd(exec, 2);

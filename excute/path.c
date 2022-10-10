@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:30:39 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/11 02:35:20 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 02:53:33 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*find_exec(char *exec)
 	char	*ret;
 
 	if (!ft_strlen(exec))
-		g_data->past_return = error_cnf("command not found", exec);
+		error_cnf("command not found", exec);
 	if (ft_strncmp(exec, "/", 1) != 0 && \
 	ft_strncmp(exec, "./", 2) != 0 && \
 	ft_strncmp(exec, "../", 3) != 0)
@@ -70,7 +70,7 @@ char	*find_exec(char *exec)
 				return (ret);
 			idx++;
 		}
-		g_data->past_return = error_cnf("command not found", exec);
+		error_cnf("command not found", exec);
 	}
 	return (exec);
 }

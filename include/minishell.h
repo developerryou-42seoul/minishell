@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 10:32:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/11 02:29:14 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 02:53:48 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		init_g_data(char **envp);
 void		init_block(t_block *block);
 
 void		error(char *str);
-int			error_cnf(char *str, char *exec);
+void		error_cnf(char *str, char *exec);
 int			error_cd(char *str, char *name);
 int			error_export(char *str, char *key);
 int			error_unset(char *str, char *arg);
