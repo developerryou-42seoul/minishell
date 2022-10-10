@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 18:17:41 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/09 22:16:37 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/10 17:33:55 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,21 @@ static int	init_cd(char **pwd, char **home)
 	return (0);
 }
 
+int	check_cd(t_block *block)
+{
+	if (block->prev || block->next)
+		return (0);
+	return (1);
+}
+
 int	builtin_cd(t_block *block)
 {
 	char	*dir;
 	char	*pwd;
 	char	*home;
 
+	if (!check_cd(block))
+		return (0);
 	if (init_cd(&pwd, &home))
 		return (1);
 	if (block->argc == 1)

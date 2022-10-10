@@ -11,7 +11,6 @@ READLINE = ~/.brew/opt/readline/include
 READLINE_LIB = ~/.brew/opt/readline/lib
 
 SRCS = main.c \
-		print.c \
 		parse/quotes.c \
 		parse/parser.c \
 		parse/expand.c \
