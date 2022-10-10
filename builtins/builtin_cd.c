@@ -44,7 +44,7 @@ static int	init_cd(char **pwd, char **home)
 	*pwd = find_env("$PWD", g_data->envp, 0);
 	*home = find_env("$HOME", g_data->envp, 0);
 	if (!(*home))
-		printf("mini: cd: HOME not set\n");
+		ft_putstr_fd("mini: cd: HOME not set\n", 2);
 	if (!(*pwd) || !(*home))
 		return (1);
 	return (0);
