@@ -9,7 +9,6 @@
 /*   Updated: 2022/10/05 21:15:24 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "minishell.h"
 
 void	error(char *str)
@@ -20,13 +19,20 @@ void	error(char *str)
 
 int	error_export(char *str, char *key)
 {
-	printf("mini: export: '%s': %s\n", key, str);
+	ft_putstr_fd(key, 2);
+	ft_putstr_fd("': ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	return (1);
 }
 
 int	error_cnf(char *str, char *exec)
 {	
-	printf("mini: %s: %s\n", exec, str);
+	ft_putstr_fd("mini: ", 2);
+	ft_putstr_fd(exec, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("\n", 2);
 	exit(127);
 }
 
@@ -38,6 +44,9 @@ int	error_cd(char *str, char *name)
 
 int	error_unset(char *str, char *arg)
 {
-	printf("mini: unset: '%s': %s\n", arg, str);
+	ft_putstr_fd("mini: unset: '", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("': ", 2);
+	ft_putstr_fd(str, 2);
 	return (1);
 }
