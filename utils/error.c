@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:31:17 by jnam              #+#    #+#             */
-/*   Updated: 2022/10/10 18:04:52 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/10/10 18:09:05 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -19,6 +19,7 @@ void	error(char *str)
 
 int	error_export(char *str, char *key)
 {
+	ft_putstr_fd("mini: export: ", 2);
 	ft_putstr_fd(key, 2);
 	ft_putstr_fd("': ", 2);
 	ft_putstr_fd(str, 2);
