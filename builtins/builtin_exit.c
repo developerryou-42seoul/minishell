@@ -6,9 +6,11 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:35:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/10 18:03:57 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/10/10 18:05:41 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 int	check_exit(t_block *block)
 {
