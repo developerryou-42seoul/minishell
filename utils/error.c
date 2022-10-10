@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:31:17 by jnam              #+#    #+#             */
-/*   Updated: 2022/10/05 21:15:24 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/10 18:04:52 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minishell.h"
@@ -41,7 +41,7 @@ int	error_cd(char *str, char *name)
 	ft_putstr_fd("mini: cd: ", 2);
 	ft_putstr_fd(name, 2);
 	ft_putstr_fd(": ", 2);
-	ft_putstr_fd("str", 2);
+	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
 	return (2);
 }
