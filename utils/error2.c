@@ -14,6 +14,9 @@
 
 int	error_env(char *str, char *arg)
 {
-	printf("mini: env: %s: %s\n", arg, str);
+	ft_putstr_fd("mini: env:", 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(str, 2);
 	return (127);
 }
