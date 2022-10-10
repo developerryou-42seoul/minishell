@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:35:21 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/10 14:12:24 by jonglee          ###   ########.fr       */
+/*   Updated: 2022/10/10 18:03:57 by jonglee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_exit_error(char *str, t_block *block, int flag)
 		ft_putstr_fd("exit\n", 2);
 	if (flag == 1)
 	{
-		ft_putstr_fd("mini: exit: ",2 );
+		ft_putstr_fd("mini: exit: ", 2);
 		ft_putstr_fd((char *)block->argv->next->content, 2);
 		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(str, 2);
@@ -45,7 +45,7 @@ void	print_exit_error(char *str, t_block *block, int flag)
 	}
 	else
 	{
-		ft_putstr_fd("mini: exit: ",2);
+		ft_putstr_fd("mini: exit: ", 2);
 		ft_putstr_fd(str, 2);
 		ft_putstr_fd("\n", 2);
 	}
