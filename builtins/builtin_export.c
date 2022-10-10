@@ -6,7 +6,7 @@
 /*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:36:16 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 21:26:53 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/10 17:49:14 by sryou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int	push_argv_to_envp(t_list *argv)
 		if (!key)
 			return (0);
 		if (is_valid_key(key))
+		{
+			free(key);
 			return (error_export("not a valid identifier", argv->content));
+		}
 		value = split_value(argv->content);
 		if (key != 0 && value != 0)
 		{
