@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/11 14:29:02 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:56:43 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*parser_sub(char *line, t_block_info *info)
 				return (NULL);
 			if (is_in_quote(block))
 			{
-				printf("quote error\n");
+				error_printf(strerror(errno), "");
 				return (NULL);
 			}
 		}
@@ -50,7 +50,7 @@ int	parser(char *line, t_block_info *info)
 			line++;
 		if (*line == '|')
 		{
-			printf("mini: syntax error near unexpected token `|'\n");
+			ft_putstr_fd("mini: syntax error near unexpected token `|'\n", 2);
 			return (1);
 		}
 		line = parser_sub(line, info);
@@ -61,7 +61,7 @@ int	parser(char *line, t_block_info *info)
 			line ++;
 			if (*line == '|' || *line == '\0')
 			{
-				printf("mini: syntax error near unexpected token `|'\n");
+				ft_putstr_fd("mini: syntax error near unexpected token `|'\n", 2);
 				return (1);
 			}
 		}

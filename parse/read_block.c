@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 17:55:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/11 02:41:41 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:57:31 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	read_redir(int type, char **line, t_block *block)
 		(*line)++;
 	if (is_redir(block, *line) || is_end(block, **line))
 	{
-		printf("mini: syntax error near unexpected token `newline'\n");
+		ft_putstr_fd("mini: syntax error near unexpected token `newline'\n", 2);
 		return (1);
 	}
 	create_empty(&str_redir);
