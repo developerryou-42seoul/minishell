@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/11 14:56:43 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 15:02:13 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*parser_sub(char *line, t_block_info *info)
 				return (NULL);
 			if (is_in_quote(block))
 			{
-				error_printf(strerror(errno), "");
+				error_print(strerror(errno), "");
 				return (NULL);
 			}
 		}
