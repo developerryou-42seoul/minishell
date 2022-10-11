@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:27:43 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/11 14:28:35 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:52:17 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	open_redirection_heredoc(t_redir *redir, t_block *block)
 	int		pipe_fd[2];
 
 	if (pipe(pipe_fd) < 0)
-		printf("mini: %s: %s\n", redir->string, strerror(errno));
+		error_print(strerror(errno), redir->string);
 	pid = fork();
 	if (pid == -1)
-		printf("mini: %s: %s\n", redir->string, strerror(errno));
+		error_print(strerror(errno), redir->string);
 	else if (pid == 0)
 		children_heredoc(redir, pipe_fd);
 	else
@@ -66,7 +66,7 @@ void	open_redirection_stdin(t_redir *redir, t_block *block)
 	{
 		fd = open(redir->string, O_RDONLY);
 		if (fd == -1)
-			printf("mini: %s: %s\n", redir->string, strerror(errno));
+			error_print(strerror(errno), redir->string);
 		add_stdin(block, fd);
 	}
 	else if (redir->type == 3)
@@ -81,14 +81,14 @@ void	open_redirection_stdout(t_redir *redir, t_block *block)
 	{
 		fd = open(redir->string, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 		if (fd == -1)
-			printf("mini: %s: %s\n", redir->string, strerror(errno));
+			error_print(strerror(errno), redir->string);
 		add_stdout(block, fd);
 	}
 	else if (redir->type == 4)
 	{
 		fd = open(redir->string, O_WRONLY | O_CREAT | O_APPEND, 0777);
 		if (fd == -1)
-			printf("mini: %s: %s\n", redir->string, strerror(errno));
+			error_print(strerror(errno), redir->string);
 		add_stdout(block, fd);
 	}
 }
