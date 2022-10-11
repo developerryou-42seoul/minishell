@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 18:52:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/11 02:44:21 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:27:37 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*mini_join(char *str, char ch)
 	i = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!ret)
-		error("malloc error");
+		error(strerror(errno));
 	while (str[i])
 	{
 		ret[i] = str[i];
@@ -40,7 +40,7 @@ char	*mini_join_dollar(char *str)
 	i = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(str) + 2));
 	if (!ret)
-		error("malloc error");
+		error(strerror(errno));
 	ret[0] = '$';
 	while (str[i])
 	{
@@ -61,7 +61,7 @@ char	*mini_join_str(char *s1, char *s2)
 	j = 0;
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
-		error("malloc error");
+		error(strerror(errno));
 	while (s1[i])
 	{
 		ret[i] = s1[i];
@@ -89,7 +89,7 @@ void	create_empty(char **str)
 {
 	*str = (char *)malloc(sizeof(char));
 	if (!(*str))
-		error("create_empty");
+		error(strerror(errno));
 	(*str)[0] = '\0';
 	return ;
 }

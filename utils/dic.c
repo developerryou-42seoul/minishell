@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dic.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
+/*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:16:31 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/11 14:06:27 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/11 14:28:20 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*split_key(char *env)
 		return (0);
 	ret = malloc(sizeof(char) * (idx + 1));
 	if (!ret)
-		error("malloc error");
+		error(strerror(errno));
 	ft_strlcpy(ret, env, idx + 1);
 	return (ret);
 }
@@ -62,12 +62,12 @@ char	*split_value(char *env)
 	while (env[idx] != '=' && env[idx] != '\0')
 		idx++;
 	if (idx == 0)
-		error("not a valid identifier");
+		error(strerror(errno));
 	if (ft_strlen(env) == idx)
 		return (0);
 	ret = malloc(sizeof(char) * (ft_strlen(env) - idx));
 	if (!ret)
-		error("malloc error");
+		error(strerror(errno));
 	ft_strlcpy(ret, env + idx + 1, ft_strlen(env) - idx);
 	return (ret);
 }

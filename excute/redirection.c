@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 21:27:43 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/11 02:46:48 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:28:35 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	make_redirection(t_block *block)
 		else if (redir->type == 2 || redir->type == 4)
 			open_redirection_stdout(redir, block);
 		else
-			error("redir error");
+			error(strerror(errno));
 		list_redir = list_redir->next;
 	}
 }
