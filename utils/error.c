@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 21:31:17 by jnam              #+#    #+#             */
-/*   Updated: 2022/10/11 02:53:17 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:15:01 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	error_cd(char *str, char *name)
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n", 2);
-	return (2);
+	return (1);
 }
 
 int	error_unset(char *str, char *arg)
