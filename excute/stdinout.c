@@ -44,7 +44,7 @@ void	stdout_manage(int fd_stdout, t_list *list_stdout)
 		list_temp = list_stdout;
 		while (list_temp)
 		{
-			ft_putstr_fd(buf, *(int *)(list_stdout->content));
+			ft_putstr_fd(buf, *(int *)(list_temp->content));
 			list_temp = list_temp->next;
 		}
 		free(buf);
