@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sll.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:55:15 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/04 18:22:06 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/11 14:05:36 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	add_redir(t_block *block, int type, char *str)
 	t_redir	*redir;
 
 	redir = malloc(sizeof(t_redir));
+	if (!redir)
+		error("malloc error");
 	redir->type = type;
 	redir->string = str;
 	ft_lstadd_back(&(block->redir), ft_lstnew(redir));

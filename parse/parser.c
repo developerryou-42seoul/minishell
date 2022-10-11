@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 16:45:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/06 20:37:37 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/10/11 14:08:15 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*parser_sub(char *line, t_block_info *info)
 	t_block	*block;
 
 	block = (t_block *)malloc(sizeof(t_block));
+	if (!block)
+		error("malloc error");
 	add_block(info, block);
 	while (!is_end(block, *line))
 	{

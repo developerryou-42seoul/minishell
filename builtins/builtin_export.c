@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sryou <sryou@student.42.fr>                +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:36:16 by junekim           #+#    #+#             */
-/*   Updated: 2022/10/10 17:49:14 by sryou            ###   ########.fr       */
+/*   Updated: 2022/10/11 14:07:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char	**make_key_arr(t_list *envp)
 
 	len = ft_lstsize(envp);
 	key_arr = malloc(sizeof(char *) * len);
+	if (!key_arr)
+		error("malloc error");
 	idx = 0;
 	while (envp)
 	{
