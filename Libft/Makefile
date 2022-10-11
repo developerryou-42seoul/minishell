@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sryou <sryou@student.42.fr>                +#+  +:+       +#+         #
+#    By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/19 10:33:16 by sryou             #+#    #+#              #
-#    Updated: 2022/07/29 16:47:34 by sryou            ###   ########.fr        #
+#    Updated: 2022/10/11 14:36:04 by jnam             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ FUNCTION = ft_isalpha.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c \
+			ft_malloc.c
 
 OBJECTS = $(FUNCTION:.c=.o)
 
