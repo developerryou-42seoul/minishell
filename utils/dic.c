@@ -6,7 +6,7 @@
 /*   By: jnam <jnam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 00:16:31 by sryou             #+#    #+#             */
-/*   Updated: 2022/10/11 14:28:20 by jnam             ###   ########.fr       */
+/*   Updated: 2022/10/11 14:48:20 by jnam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*dic_to_charptr(t_dic *dic)
 	char	*ret;
 
 	temp = ft_strdup(dic->key);
+	if (!temp)
+		error(strerror(errno));
 	temp = mini_join(temp, '=');
 	ret = ft_strjoin(temp, dic->value);
 	free(temp);
